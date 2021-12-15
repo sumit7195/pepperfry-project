@@ -41,6 +41,7 @@
     font-weight: 400;
     height: 80px;
     margin-top: 0.6%;
+    background-color: rgb(247, 247, 247);
   }
   #search_2_half div:nth-child(2) {
     /* border: solid black 1px; */
@@ -56,6 +57,7 @@
     font-size: 30px;
     font-weight: 400;
     outline: none;
+    background-color: rgb(247, 247, 247);
   }
   #search_bar button {
     width: 10%;
@@ -65,6 +67,7 @@
     border-radius: 20%;
     background-color: white;
     cursor: pointer;
+    background-color: rgb(247, 247, 247);
   }
   #user_help {
     padding: 0px;
