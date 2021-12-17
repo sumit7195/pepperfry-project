@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="google-signin-client_id"
+      content="672027878849-v1rf1o7gv2he52damsdacgju8m1b4kba.apps.googleusercontent.com"
+    />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <title>Login</title>
+    <link rel="stylesheet" href="/public/assets/style.css">
+  </head>
+  <body>
+    
+    <div class="container">
+  
+
+      <div class="img-container">
+            <img src="https://ii1.pepperfry.com/media/wysiwyg/banners/Web_IMG_12Oct.jpg" alt="">
+      </div>
+       
+       
+      <div class="form-container">
+            
+        
+             <input type="text" placeholder="Name" class="input-form" required >
+             <div class="form-input otp">
+    
+                 <input type="text" placeholder="Mobile Number" class="input-form mobile" required > <p class="verify">VERIFY WITH OTP</p>
+          
+             </div>
+         <input type="email" placeholder="Email ID" class="input-form " required >
+             <input type="password" placeholder="password" class="input-form" required >
+                            
+            <button class="reg-button">REGISTER</button> 
+           
+            
+           <div class="term">
+ 
+               <p>By registering you agree to our</p> <a href="#">Terms and Condition</a>
+           </div>   
+             
+ 
+          <div class="existing">
+ 
+             <button>Exiting User? Log In</button>    
+                     
+             <div class="or">
+                 <p>OR Continue With</p>
+                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
+             </div>
+          </div>
+ 
+ 
+ 
+ 
+         </div>
+   
+ 
+      </div>
+     
+       
+      
+ 
+ 
+     </div>
+
+   
+
+    
+
+    
+
+
+
+
+    <script>
+      function onSignIn(googleUser) {
+        var id_token = googleUser.getAuthResponse().id_token;
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', "/login");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onload = function () {
+          console.log("Signed in as: " + xhr.responseText);
+          if(xhr.response==='success'){
+            signOut();
+            location.assign('/dashboard')
+          }
+        };
+        xhr.send(JSON.stringify({ token: id_token }));
+      }
+    </script>
+
+    <!-- <a href="#" onclick="signOut();">Sign out</a> -->
+    <script>
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log("User signed out.");
+        });
+      }
+
+      
+
+    </script>
+  </body>
+</html>
