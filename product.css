@@ -62,10 +62,10 @@
     /* border: blue solid 1px; */
     width: 100%;
   }
-  img{
+  #product_cover img{
     width: 100%;
   }
-   p{
+  #product_cover p{
     font-size: 30px;
     margin-left: 1%;
   }
@@ -80,8 +80,6 @@
     color: tomato;
   }
   #small_img_div{
-
-    /* border: solid 1px violet; */
     width: 100%;
     margin-top: 10px;
     height: 300px;
