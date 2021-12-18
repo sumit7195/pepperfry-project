@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/5f6f74ca0f.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    #plmasterContainer {
+      background-color: #f5f5f5;
+      font-size: 14px;
+    }
+    /* .bor {
+      border: 1px solid red;
+    } */
+    #plContainer {
+      display: flex;
+      width: 95%;
+      margin: auto;
+    }
+    #pl1 {
+      /* border: 1px solid red; */
+      width: 20%;
+      height: 980px;
+      background-color: white;
+      padding-left: 15px;
+    }
+
+    #pl1 h4,
+    #pl1 h3 {
+      margin: 15px 0px;
+    }
+    #pl1 > div {
+      height: 200px;
+      margin: 10px 0px;
+    }
+    #abovePlContainer {
+      display: flex;
+      /* border: 1px solid red; */
+      justify-content: space-between;
+      /* width: 76%; */
+      height: 40px;
+    }
+    #abovePlContainer > div:nth-child(1) {      
+      margin-top: 1%;
+      margin-right: 45%;
+      margin-left: 23%;
+    }
+    #abovePlContainer > div:nth-child(1) >span{       
+      font-weight: 700;
+    }
+    #abovePlContainer > div:nth-child(2) {
+      margin-right: 3%;
+    }
+    #subHead {
+      text-align: center;
+      margin: 25px 0px;
+    }
+    #pl2 {
+      width: 80%;
+      margin-left: 1%;
+      display: grid;
+      grid-template-columns: repeat(3, 33%);
+      gap: 10px;
+      justify-content: space-evenly;
+    }
+    #pl2 > div {
+      /* border: 1px solid red; */
+      height: 400px;
+      padding-left: 5%;
+      background-color: white;
+    }
+    #pl2 > div > div {
+      /* background-color: teal; */
+      height: 70%;
+      width: 77%;
+      margin-left: 4.5%;
+      margin-top: 6.5%;
+    }
+    .tempBtnEl {
+      width: 100%;
+      height: 50px;
+      margin-top: 90%;
+      background-color: rgba(255, 255, 255, 0.7);
+      display: inline-block;
+    }
+    .tempBtnEl > button {
+      border: 1px solid black;
+      font-weight: 700;
+      height: 80%;
+      margin-top: 1%;
+      width: 40%;
+      background-color: transparent;
+      margin-left: 30%;
+    }
+    #abovePlContainer > div:nth-child(2) > select {
+      font-weight: 700;
+      width: 150px;
+      height: 35px;
+      text-align: center;
+    }
+    #filtersArea {
+      min-height: 40px;
+      width: 95%;
+      margin: auto;
+      padding-top: 1%;
+    }
+    .spanEl {
+      display: inline-block;
+      border: 1px solid black;
+      height: 17px;
+      margin-right: 15px;
+      padding: 5px;
+      font-size: 13px;
+      color: grey;
+    }
+    .clearFilters {
+      font-size: 11px;
+      font-weight: 700;
+      margin-left: 15 px;
+      color: #489FBE;
+    }
+    #pl1Brand > div,
+    #pl1Price > div,
+    #pl1Material > div,
+    #pl1Offer > div {
+      padding-bottom: 20px;
+      border-bottom: 1px solid grey;
+    }
+    #pl1Brand > div > div,
+    #pl1Price > div > div,
+    #pl1Material > div > div,
+    #pl1Offer > div > div {
+      margin: 13px 0px;
+    }
+    #pl1Brand > div > div > input,
+    #pl1Price > div > div > input,
+    #pl1Material > div > div > input,
+    #pl1Offer > div > div > input {
+      padding: 300px;
+    }
+  </style>
+  <body>
+    <h3 id="subHead">SETTEES</h3>
+    <div id="plmasterContainer">
+      <div id="filtersArea" class="bor"></div>
+      <div id="abovePlContainer">
+        <div id="tot"><span>11</span> Options In Settees</div>
+        <div>
+          SORT BY:
+          <select id="sortingOptions">
+            <option value="">---</option>
+            <option value="lh">Price Low to High</option>
+            <option value="hl">Price High to Low</option>
+          </select>
+        </div>
+      </div>
+      <div id="plContainer">
+        <div id="pl1">
+          <h3>APPLY FILTERS</h3>
+          <hr />
+          <div class="bor" id="pl1Brand">
+            <h4>BRAND</h4>
+            <div></div>
+          </div>
+          <div class="bor" id="pl1Price">
+            <h4>PRICE</h4>
+            <div></div>
+          </div>
+          <div class="bor" id="pl1Material">
+            <h4>PRIMARY MATERIAL</h4>
+            <div></div>
+          </div>
+          <div class="bor" id="pl1Offer">
+            <h4>DISCOUNT</h4>
+            <div></div>
+          </div>
+        </div>
+        <div id="pl2"></div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- ***********************************************************SCRIPT BELOW******************************** -->
+
+<script>
+  // settees data set to localStorage
+  // {
+  // let Settees = [
+  //   {
+  //     Title: "Rovel Solid Wood Settee In Brown Colour",
+  //     Price: 34999,
+  //     offer: 66,
+  //     img1: "https://ii1.pepperfry.com/media/catalog/product/r/o/568x625/rovel-solid-wood-settee-in-brown-colour---bohemiana-by-pepperfry-rovel-solid-wood-settee-in-brown-co-cbfxcg.jpg",
+  //     img2: "https://ii1.pepperfry.com/media/catalog/product/r/o/568x625/rovel-solid-wood-settee-in-brown-colour---bohemiana-by-pepperfry-rovel-solid-wood-settee-in-brown-co-xyq6bc.jpg",
+  //     img3: "https://ii1.pepperfry.com/media/catalog/product/r/o/568x625/rovel-solid-wood-settee-in-brown-colour---bohemiana-by-pepperfry-rovel-solid-wood-settee-in-brown-co-6cnd3b.jpg",
+  //     Brand: "Bohemiana",
+  //     Dimensions: "H 28 X W 40 X D 18 (All Dimension Are In Inches)",
+  //     dims: [28, 40, 18],
+  //     Weight: " 10.4 KG",
+  //     Colour: "Brown",
+  //     Warranty: "36 Months Warranty",
+  //     Assembly: " Carpenter Assembly",
+  //     Primary_Material: "Mango Wood",
+  //     Room_Type: "Living Room",
+  //     Seating_Height: "16.75",
+  //   },
+  //   {
+  //     Title: "Symes Solid Wood Sette In Honey Oak Finish",
+  //     Price: 34999,
+  //     offer: 50,
+  //     dims: [37, 48, 19],
+  //     img1: "https://ii1.pepperfry.com/media/catalog/product/s/y/568x625/symes-solid-wood-bench-in-honey-oak-finish-by-amberville-symes-solid-wood-bench-in-honey-oak-finish--1psgkx.jpg",
+  //     img2: "https://ii1.pepperfry.com/media/catalog/product/s/y/568x625/symes-solid-wood-bench-in-honey-oak-finish---amberville-by-pepperfry-symes-solid-wood-bench-in-honey-k93hqa.jpg",
+  //     img3: "https://ii1.pepperfry.com/media/catalog/product/s/y/568x625/symes-solid-wood-bench-in-honey-oak-finish-by-amberville-symes-solid-wood-bench-in-honey-oak-finish--cotgyk.jpg",
+  //     Brand: "Amberville",
+  //     Dimensions:
+  //       " H 37 x W 48 x D 19; Seating Height - 18 (All dimension in inches)",
+  //     Weight: " 20 KG",
+  //     Colour: "Honey Oak",
+  //     Warranty: " 36 Months' Warranty",
+  //     Assembly: " No Assembly Required",
+  //     Primary_Material: "Sheesham Wood",
+  //     Room_Type: " Living Room",
+  //     Seating_Height: " 18",
+  //   },
+  //   {
+  //     Title: "Ludwig Solid Wood Settee In Natural Finish",
+  //     Price: 52999,
+  //     offer: 63,
+  //     img1: "https://ii1.pepperfry.com/media/catalog/product/l/u/568x625/ludwig-solid-wood-bench-in-natural-finish---bohemiana-by-pepperfry-ludwig-solid-wood-bench-in-natura-t1fmh3.jpg",
+  //     img2: "https://ii1.pepperfry.com/media/catalog/product/l/u/568x625/ludwig-solid-wood-console-table-in-natural-finish---bohemiana-by-pepperfry-ludwig-solid-wood-console-8hcngq.jpg",
+  //     img3: "https://ii1.pepperfry.com/media/catalog/product/l/u/568x625/ludwig-solid-wood-console-table-in-natural-finish---bohemiana-by-pepperfry-ludwig-solid-wood-console-kpvezc.jpg",
+  //     Brand: "Bohemiana",
+  //     Dimensions: " H 24 x W 35.5 x D 15.25 (All Dimension Are In Inches)",
+  //     dims: [24, 35.5, 15.25],
+  //     Weight: " 30 KG",
+  //     Colour: " Natural",
+  //     Warranty: "36 Months' Warranty",
+  //     Assembly: " Carpenter Assembly",
+  //     Primary_Material: "Mango Wood",
+  //     Room_Type: "Living Room",
+  //   },
+  //   {
+  //     Title: "Orpha Metal Settee In Grey Colour",
+  //     Price: 32999,
+  //     offer: 76,
+  //     dims: [22, 41.5, 20],
+  //     img1: "https://ii1.pepperfry.com/media/catalog/product/o/r/568x625/orpha-metal-settee-in-grey-colour---bohemiana-by-pepperfry-orpha-metal-settee-in-grey-colour---bohem-uoaipu.jpg",
+  //     img2: "https://ii1.pepperfry.com/media/catalog/product/o/r/568x625/orpha-metal-settee-in-grey-colour---bohemiana-by-pepperfry-orpha-metal-settee-in-grey-colour---bohem-tqsrtm.jpg",
+  //     img3: "https://ii1.pepperfry.com/media/catalog/product/o/r/568x625/orpha-metal-settee-in-grey-colour---bohemiana-by-pepperfry-orpha-metal-settee-in-grey-colour---bohem-mejtxw.jpg",
+  //     Brand: "Bohemiana",
+  //     Dimensions: "H 22 X W 41.5 X D 20 (All Dimension Are In Inches)",
+  //     Weight: " 9.2 KG",
+  //     Colour: " Grey / Black",
+  //     Warranty: " 36 Months' Warranty",
+  //     Assembly: " Carpenter Assembly",
+  //     Primary_Material: "Metal",
+  //     Room_Type: " Living Room",
+  //     Seating_Height: "17",
+  //   },
+  //   {
+  //     Title: "Maurya Solid Wood Settee In Honey Oak Finish",
+  //     Price: 43999,
+  //     offer: 50,
+  //     img1: "https://ii1.pepperfry.com/media/catalog/product/m/a/568x625/maurya-solid-wood-settee-in-honey-oak-finish---mudramark-by-pepperfry-maurya-solid-wood-settee-in-ho-edv7r6.jpg",
+  //     img2: "https://ii1.pepperfry.com/media/catalog/product/a/m/568x625/amherst-settee-in-honey-oak-finish-by-amberville-amherst-settee-in-honey-oak-finish-by-amberville-lre7kf.jpg",
+  //     img3: "https://ii1.pepperfry.com/media/catalog/product/a/m/568x625/amherst-settee-in-honey-oak-finish-by-amberville-amherst-settee-in-honey-oak-finish-by-amberville-gavfmr.jpg",
+  //     Brand: "Mudramark",
+  //     Dimensions: "H 37 x W 47 x D 19 (In Inches)",
+  //     dims: [37, 47, 19],
+  //     Weight: "25 KG",
+  //     Colour: "Honey Oak",
+  //     Warranty: "36 Months' Warranty",
+  //     Assembly: " No Assembly Required",
+  //     Primary_Material: "Sheesham Wood",
+  //     Room_Type: "Living Room",
+  //     Seating_Height: "18",
+  //   },
+  //   {
+  //     Title: "Maurya Solid Wood Settee In Passion Mahogany Finish",
+  //     Price: 43999,
+  //     offer: 50,
+  //     dims: [36, 63, 20],
+  //     img1: "https://ii1.pepperfry.com/media/catalog/product/m/a/568x625/maurya-solid-wood-settee-in-passion-mahogany-finish---mudramark-by-pepperfry-maurya-solid-wood-sette-axebb2.jpg",
+  //     img2: "https://ii1.pepperfry.com/media/catalog/product/a/m/568x625/amherst-settee-in-passion-mahogany-finish-by-amberville-amherst-settee-in-passion-mahogany-finish-by-nbf4mc.jpg",
+  //     img3: "https://ii1.pepperfry.com/media/catalog/product/m/a/568x625/maurya-solid-wood-handcrafted-settee-in-passion-mahogany-finish-by-mudramark-maurya-solid-wood-handc-pqeb47.jpg",
+  //     Brand: "Mudramark",
+  //     Dimensions: "H 36 x W 63 x D 20(all dimensions in inches)",
+  //     Weight: "25 KG",
+  //     Colour: "Passion Mahogany",
+  //     Warranty: "36 Months' Warranty",
+  //     Assembly: "No Assembly Required",
+  //     Primary_Material: "Mango Wood",
+  //     Room_Type: "Living Room",
+  //     Seating_Height: "18",
+  //   },
+  //   {
+  //     Title: "Thiva Metal Settee In Matte Black Finish",
+  //     Price: 17999,
+  //     offer: 26,
+  //     dims: [24, 46, 20],
+  //     img1: "https://ii1.pepperfry.com/media/catalog/product/t/h/568x625/thiva-metal-bench-in-black-matte-finish---bohemiana-by-pepperfry-thiva-metal-bench-in-black-matte-fi-5ozqzk.jpg",
+  //     img2: "https://ii1.pepperfry.com/media/catalog/product/t/h/568x625/thiva-metal-bench-in-black-matte-finish---bohemiana-by-pepperfry-thiva-metal-bench-in-black-matte-fi-qzpbxl.jpg",
+  //     img3: "https://ii1.pepperfry.com/media/catalog/product/t/h/568x625/thiva-metal-bench-in-black-matte-finish---bohemiana-by-pepperfry-thiva-metal-bench-in-black-matte-fi-eef09a.jpg",
+  //     Brand: "Bohemiana",
+  //     Dimensions: "H 24 x W 46 x D 20(All dimension are in Inches)",
+  //     Weight: "21 KG",
+  //     Colour: "Black",
+  //     Warranty: " 36 Months' Warranty",
+  //     Assembly: "No Assembly Required",
+  //     Primary_Material: "Iron",
+  //     Room_Type: " Living Room",
+  //     Seating_Height: "15",
+  //   },
+  //   {
+  //     Title: "Rafles Settee in Brown Colour",
+  //     Price: 19900,
+  //     offer: 12,
+  //     dims: [34, 46, 19],
+  //     img1: "https://ii1.pepperfry.com/media/catalog/product/r/a/568x625/rafles-settee-in-brown-colour-by-stories-rafles-settee-in-brown-colour-by-stories-zfjims.jpg",
+  //     img2: "https://ii1.pepperfry.com/media/catalog/product/r/a/568x625/rafles-two-seater-bench-in-brown-colour-by-stories-rafles-two-seater-bench-in-brown-colour-by-storie-6zfwp4.jpg",
+  //     img3: "https://ii1.pepperfry.com/media/catalog/product/r/a/568x625/rafles-two-seater-bench-in-brown-colour-by-stories-rafles-two-seater-bench-in-brown-colour-by-storie-arnvva.jpg",
+  //     Brand: "Stories",
+  //     Dimensions:
+  //       "H 34 x W 46 x D 19; Seating Height : 18(all dimensions are in inches)",
+  //     Weight: "10 KG",
+  //     Warranty: "12 Months' Warranty",
+  //     Assembly: "No Assembly Required",
+  //     Primary_Material: "Teak Wood",
+  //     Room_Type: "Living Room",
+  //     Seating_Height: "18",
+  //   },
+  //   {
+  //     Title: "Symes Settee In Honey Oak Finish",
+  //     Price: 31999,
+  //     offer: 39,
+  //     dims: [37, 48, 19],
+  //     img1: "https://ii1.pepperfry.com/media/catalog/product/s/y/568x625/symes-settee-in-honey-oak-finish---amberville-by-pepperfry-symes-settee-in-honey-oak-finish---amberv-sgyybd.jpg",
+  //     img2: "https://ii1.pepperfry.com/media/catalog/product/s/y/568x625/symes-settee-in-honey-oak-finish-by-amberville-symes-settee-in-honey-oak-finish-by-amberville-auoify.jpg",
+  //     img3: "https://ii1.pepperfry.com/media/catalog/product/a/m/568x625/amherst-settee-in-honey-oak-finish-by-amberville-amherst-settee-in-honey-oak-finish-by-amberville-p18tno.jpg",
+  //     Brand: "Amberville",
+  //     Dimensions:
+  //       "H 34 x W 46 x D 19; Seating Height : 18(all dimensions are in inches)",
+  //     Weight: "20 KG",
+  //     Warranty: "36 Months' Warranty",
+  //     Assembly: "No Assembly Required",
+  //     Primary_Material: "Sheesham Wood",
+  //     Room_Type: "Living Room",
+  //     Seating_Height: "18",
+  //   },
+  //   {
+  //     Title: "Thiva Metal Settee In Grey Finish",
+  //     Price: 17999,
+  //     offer: 26,
+  //     dims: [24, 46, 20],
+  //     img1: "https://ii1.pepperfry.com/media/catalog/product/t/h/568x625/thiva-metal-bench-in-grey-finish---bohemiana-by-pepperfry-thiva-metal-bench-in-grey-finish---bohemia-92iksq.jpg",
+  //     img2: "https://ii1.pepperfry.com/media/catalog/product/t/h/568x625/thiva-metal-bench-in-grey-finish---bohemiana-by-pepperfry-thiva-metal-bench-in-grey-finish---bohemia-rzzpsq.jpg",
+  //     img3: "https://www.pepperfry.com/thiva-metal-bench-in-grey-finish-bohemiana-by-pepperfry-1903474.html?type=clip&pos=10:1&cat=4180&total_result=11&variation_id=209072&sort=ranking|desc",
+  //     Brand: "Bohemiana",
+  //     Dimensions:
+  //       "H 34 x W 46 x D 19; Seating Height : 18(all dimensions are in inches)",
+  //     Weight: "21 KG",
+  //     Warranty: "36 Months' Warranty",
+  //     Assembly: "No Assembly Required",
+  //     Primary_Material: "Iron",
+  //     Room_Type: "Living Room",
+  //     Seating_Height: "15",
+  //   },
+  //   {
+  //     Title: "Thiva Metal Settee In Gold Finish",
+  //     Price: 17999,
+  //     offer: 26,
+  //     dims: [24, 46, 20],
+  //     img1: "https://ii1.pepperfry.com/media/catalog/product/t/h/568x625/thiva-metal-bench-in-gold-finish---bohemiana-by-pepperfry-thiva-metal-bench-in-gold-finish---bohemia-6f2qjl.jpg",
+  //     img2: "https://ii1.pepperfry.com/media/catalog/product/t/h/568x625/thiva-metal-bench-in-gold-finish---bohemiana-by-pepperfry-thiva-metal-bench-in-gold-finish---bohemia-imalfg.jpg",
+  //     img3: "https://ii1.pepperfry.com/media/catalog/product/t/h/568x625/thiva-metal-bench-in-gold-finish---bohemiana-by-pepperfry-thiva-metal-bench-in-gold-finish---bohemia-an91k3.jpg",
+  //     Brand: "Bohemiana",
+  //     Dimensions:
+  //       "H 34 x W 46 x D 19; Seating Height : 18(all dimensions are in inches)",
+  //     Weight: "21 KG",
+  //     Warranty: "36 Months' Warranty",
+  //     Assembly: "No Assembly Required",
+  //     Primary_Material: "Iron",
+  //     Room_Type: "Living Room",
+  //     Seating_Height: "15",
+  //   },
+  // ];
+
+  // localStorage.setItem("Settees", JSON.stringify(Settees));
+  // }
+
+  let dataArr = JSON.parse(localStorage.getItem("Settees")) || [];
+  let cartArr = JSON.parse(localStorage.getItem("cartArr")) || [];
+  //filters part
+  {
+    if (dataArr.length == 0) alert("Local Storage is empty!");
+    else {
+      //brand
+      {
+        let pl1AllBrands = {};
+        dataArr.forEach((item) => {
+          if (!pl1AllBrands[item.Brand]) pl1AllBrands[item.Brand] = 1;
+          else pl1AllBrands[item.Brand]++;
+        });
+        for (brand in pl1AllBrands) {
+          let divEl = document.createElement("div");
+          divEl.innerHTML = `
+          <input type="checkbox">&nbsp;<span class='filters'>${brand}</span>&nbsp;(<span>${pl1AllBrands[brand]}</span>)`;
+          document.querySelector("#pl1Brand>div").append(divEl);
+        }
+      }
+      //price
+      {
+        let under10 = 0,
+          over10 = 0;
+        dataArr.forEach((item) => {
+          if (item.Price * (1 - item.offer / 100) < 10000) {
+            under10++;
+          } else over10++;
+        });
+        let divEl = document.createElement("div");
+        divEl.innerHTML = `
+        <input type="checkbox">&nbsp;<span class='filters'>Under ₹ 10,000</span>&nbsp;(<span>${under10}</span>)`;
+        let divEl2 = document.createElement("div");
+        divEl2.innerHTML = `
+        <input type="checkbox">&nbsp;<span class='filters'>Over ₹ 10,000</span>&nbsp;(<span>${over10}</span>)`;
+        document.querySelector("#pl1Price>div").append(divEl, divEl2);
+      }
+    }
+    //primary material
+    {
+      let pl1AllMaterial = {};
+      dataArr.forEach((item) => {
+        if (!pl1AllMaterial[item.Primary_Material])
+          pl1AllMaterial[item.Primary_Material] = 1;
+        else pl1AllMaterial[item.Primary_Material]++;
+      });
+      for (material in pl1AllMaterial) {
+        let divEl = document.createElement("div");
+        divEl.innerHTML = `
+          <input type="checkbox">&nbsp;<span class='filters'>${material}</span>&nbsp;(<span>${pl1AllMaterial[material]}</span>)`;
+        document.querySelector("#pl1Material>div").append(divEl);
+      }
+    }
+
+    //disc
+    {
+      let discObj = {
+        10: 0,
+        20: 0,
+        30: 0,
+        40: 0,
+        50: 0,
+        60: 0,
+        70: 0,
+      };
+
+      for (off in discObj) {
+        for (let i = 0; i < dataArr.length; i++) {
+          if (dataArr[i].offer >= off) {
+            discObj[off]++;
+          }
+        }
+        let divEl = document.createElement("div");
+        divEl.innerHTML = `
+      <input type="radio">&nbsp;<span class='filters'>${off}% and Above</span>&nbsp;(<span>${discObj[off]}</span>)`;
+        document.querySelector("#pl1Offer>div").append(divEl);
+      }
+      //  console.log(discObj)
+    }
+  }
+
+  //grid cards
+  {
+    // console.log(dataArr)
+    if (dataArr.length == 0) alert("Local Storage is empty!");
+    else {
+      display(dataArr);
+    }
+  }
+
+  let tempArr = dataArr.map((item) => {
+    return item;
+  });
+  //sort functionality
+  {
+    document
+      .querySelector("#abovePlContainer>div:nth-child(2)>select")
+      .addEventListener("change", (e) => {
+        if (e.target.value == "lh") {
+          //low to high
+          tempArr = tempArr.sort((a, b) => {
+            return (
+              a.Price * (1 - a.offer / 100) - b.Price * (1 - b.offer / 100)
+            );
+          });
+          display(tempArr);
+        } else if (e.target.value == "hl") {
+          //high to low
+          tempArr = tempArr.sort((a, b) => {
+            return (
+              b.Price * (1 - b.offer / 100) - a.Price * (1 - a.offer / 100)
+            );
+          });
+          display(tempArr);
+        } else {
+          display(dataArr);
+        }
+      });
+  }
+
+  let activeFilters = {};
+  //filter functionaity
+  {
+    let inputs = document.querySelectorAll("#pl1 input");
+    //everytime an option is checked keep updating on tempArr
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].addEventListener("change", (e) => {
+        if (e.path[0].checked == true) {
+          if (e.path[3].id == "pl1Offer") {
+            //key should be pl1offer
+            let offerInputs = document.querySelectorAll("#pl1Offer>div input");
+            for (let i = 0; i < offerInputs.length; i++) {
+              //Unchecking all options inside pl1offer
+              offerInputs[i].checked = false;
+            }
+            //checking the chosen option inside pl1offer
+            e.path[1].children[0].checked = true;
+            //overwriting the new offer choice
+            activeFilters[e.path[3].id] = e.path[1].children[1].textContent;
+          } else
+            activeFilters[e.path[1].children[1].textContent] = e.path[3].id;
+        } else {
+          delete activeFilters[e.path[1].children[1].textContent];
+        }
+        //populate the active filters  area
+        {
+          document.querySelector("#plmasterContainer>#filtersArea").innerHTML =
+            "";
+          for (choice in activeFilters) {
+            let spanEl = document.createElement("div");
+            if (choice == "pl1Offer")
+              spanEl.innerHTML = `${activeFilters[choice]} <i class="fas fa-times"></i>`;
+            else spanEl.innerHTML = `${choice} <i class="fas fa-times"></i>`;
+
+            spanEl.children[0].addEventListener("click", (el) => {
+              el.path[1].remove();
+              // if(choice=='pl1Offer'){
+
+              // }else{
+
+              // }
+              delete activeFilters[choice];
+              console.log(activeFilters);
+              if (Object.keys(activeFilters).length == 0)
+                el.path[2].children[0].remove();
+              filterCascade(activeFilters);
+            });
+
+            spanEl.setAttribute("class", "spanEl");
+            document
+              .querySelector("#plmasterContainer>#filtersArea")
+              .append(spanEl);
+          }
+          let clearFilters = document.createElement("span");
+          clearFilters.setAttribute("class", "clearFilters");
+          clearFilters.textContent = "Clear filters";
+
+          clearFilters.addEventListener("click", () => {
+            window.location.reload();
+          });
+          document
+            .querySelector("#plmasterContainer>#filtersArea")
+            .append(clearFilters);
+        }
+        filterCascade(activeFilters);
+      });
+    }
+  }
+
+  //function to implement filtering
+  {
+    function filterCascade(filterChoices) {
+      // console.log(filterChoices)
+      tempArr = dataArr.map((e) => {
+        return e;
+      });
+
+      for (choice in filterChoices) {
+        // console.log(choice)
+        if (filterChoices[choice] == "pl1Brand") {
+          tempArr = tempArr.filter((ch) => {
+            return choice == ch.Brand;
+          });
+        } else if (filterChoices[choice] == "pl1Price") {
+          if (choice == "Under ₹ 10,000") {
+            tempArr = tempArr.filter((ch) => {
+              return ch.Price * (1 - ch.offer / 100) <= 10000;
+            });
+          } else if (choice == "Over ₹ 10,000") {
+            tempArr = tempArr.filter((ch) => {
+              return ch.Price * (1 - ch.offer / 100) > 10000;
+            });
+          }
+        } else if (filterChoices[choice] == "pl1Material") {
+          tempArr = tempArr.filter((ch) => {
+            return choice == ch.Primary_Material;
+          });
+        } else if (choice == "pl1Offer") {
+          tempArr = tempArr.filter((ch) => {
+            return ch.offer >= filterChoices[choice].trim().split("%")[0];
+          });
+        }
+      }
+      display(tempArr);
+    }
+  }
+
+  let clickableArea=1;
+  //function to display cards
+  function display(arr) {
+    document.getElementById("pl2").innerHTML = "";
+    document.querySelector("#abovePlContainer>#tot>span").textContent =
+      arr.length;
+    arr.forEach((item) => {
+      let card = document.createElement("div");
+      let imageHolder = document.createElement("div");      
+      imageHolder.style.backgroundImage = "url(" + item.img1 + ")";
+      imageHolder.style.backgroundSize = "contain";
+      imageHolder.style.backgroundRepeat = "no-repeat";      
+      imageHolder.addEventListener('click',()=>{
+        if(clickableArea==1) alert('Opening product page')
+      })
+      let title = document.createElement("p");
+      title.textContent = item.Title;
+      title.style.fontWeight = "700";
+      let desc = document.createElement("p");
+      desc.style.fontWeight = "500";
+      desc.style.color = "grey";
+      desc.style.margin = "10px 0px";
+      if (item.Brand != "Stories")
+        desc.textContent = item.Brand + " by Pepperfry";
+      else desc.textContent = item.Brand;
+      let heart = document.createElement("span");
+      heart.innerHTML = '<i class="fas fa-heart"></i>';
+      heart.style.marginLeft = "20%";      
+      heart.style.fontSize = "18px";                  
+      heart.addEventListener('mouseenter',()=>{
+        heart.style.color='red'
+      })
+      heart.addEventListener('mouseleave',()=>{
+        heart.style.color='grey'
+      })
+      desc.append(heart);
+      let price = document.createElement("p");
+      price.style.fontWeight = "700";
+      price.innerHTML = `₹<span>${Math.round(
+        item.Price * (1 - item.offer / 100)
+      )}</span>&nbsp;&nbsp;&nbsp;₹<span> ${item.Price}</span>`;
+      price.children[1].style.textDecoration = "line-through";
+      let text = document.createElement("p");
+      text.style.color = "grey";
+      text.innerHTML = `Save ₹ ${(item.offer / 100) * item.Price} <span>(${
+        item.offer
+      }% Off)</span>, Limited Time Offer`;
+      text.children[0].style.color = "tomato";
+      card.style.paddingBottom='30px'
+      card.append(imageHolder, title, desc, price, text);
+      document.getElementById("pl2").append(card);
+
+      card.addEventListener("mouseenter", (e) => {
+        if (e.target.children[0].children.length == 0) {
+          let tempBtnEl = document.createElement("div");
+          tempBtnEl.innerHTML = `
+                <button>Add to Cart</button>              
+                `;
+          tempBtnEl.addEventListener('mouseenter',()=>{
+            clickableArea=0;
+          })                
+          tempBtnEl.addEventListener('mouseleave',()=>{
+            clickableArea=1;
+          })                
+          tempBtnEl.children[0].addEventListener("click", () => {
+            // add item to cart obj
+            let cartObj = {
+              item: item,
+              qty: 1,
+            };
+            let found = 0;
+            for (let i = 0; i < cartArr.length && found == 0; i++) {
+              if (cartArr[i].item.Title == item.Title) {
+                cartArr[i].qty++;
+                found = 1;
+              }
+            }
+            if (found == 0) cartArr.push(cartObj);
+            localStorage.setItem("cartArr", JSON.stringify(cartArr));
+          });
+          tempBtnEl.setAttribute("class", "tempBtnEl");
+          e.target.children[0].append(tempBtnEl);
+        }
+      });
+
+      card.addEventListener("mouseleave", (e) => {
+        if (e.target.children[0].children.length != 0) {
+          e.target.children[0].children[0].remove();
+        }
+      });
+
+    });
+  }
+</script>
