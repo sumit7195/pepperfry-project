@@ -1,2 +1,2 @@
 # pepperfry project
- this is masai school project
+ This is a Masai School Project
