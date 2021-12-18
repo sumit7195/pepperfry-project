@@ -197,7 +197,7 @@
 <script>
   // settees data set to localStorage
   // {
-  let Settees = [
+  let products_data = [
     {
       Title: "Rovel Solid Wood Settee In Brown Colour",
       Price: 34999,
@@ -398,10 +398,10 @@
     },
   ];
 
-  localStorage.setItem("Settees", JSON.stringify(Settees));
+  localStorage.setItem("products_data", JSON.stringify(products_data));
   // }
 
-  let dataArr = JSON.parse(localStorage.getItem("Settees")) || [];
+  let dataArr = JSON.parse(localStorage.getItem("products_data")) || [];
   let cartArr = JSON.parse(localStorage.getItem("cartArr")) || [];
   //filters part
   {
@@ -646,6 +646,8 @@
       imageHolder.style.backgroundRepeat = "no-repeat";
       imageHolder.addEventListener("click", () => {
         if (clickableArea == 1) alert("Opening product page");
+        localStorage.setItem('current',JSON.stringify(item));
+
       });
       let title = document.createElement("p");
       title.textContent = item.Title;
