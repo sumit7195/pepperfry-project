@@ -1,0 +1,100 @@
+#product_cover {
+    /* border: solid 1px black; */
+    width: 75%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Hind', sans-serif;
+  }
+
+  #img_div {
+    /* border: solid red 1px; */
+    width: 50%;
+    /* height: 800px; */
+  }
+  #info_div {
+    /* border: solid red 1px; */
+    width: 48%;
+  }
+  #title_div {
+    /* border: blue solid 1px; */
+    width: 100%;
+  }
+  #title_div > h1 {
+    font-size: 300%;
+    overflow: hidden;
+  }
+  #price{
+    color: tomato;
+    font-weight: bold;
+    font-size: 50px;
+  }
+  #add_div {
+    /* border: blue solid 1px; */
+    width: 100%;
+  }
+  #bank_offers {
+    /* border: blue solid 1px; */
+    width: 100%;
+  }
+  #bank_offers img{
+    border: solid 5px gray ;
+    border-radius: 5px;
+  }
+  #btn_div {
+    /* border: blue solid 1px; */
+    width: 100%;
+    height: 200px;
+  }
+  #btn_div button{
+    width: 46%;
+    margin-left: 3%;
+    margin-top: 100px;
+    height: 60px;
+    background-color:tomato;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: bolder;
+  }
+  #prod_details {
+    /* border: blue solid 1px; */
+    width: 100%;
+  }
+  img{
+    width: 100%;
+  }
+   p{
+    font-size: 30px;
+    margin-left: 1%;
+  }
+  span{
+    font-size: 30px;
+  }
+  #first_price{
+    text-decoration: line-through;
+  }
+  #Saved_cost{
+    
+    color: tomato;
+  }
+  #small_img_div{
+
+    /* border: solid 1px violet; */
+    width: 100%;
+    margin-top: 10px;
+    height: 300px;
+    display: flex;
+    gap: 2%;
+  }
+  #small_img_div img{
+    height: 100%;
+    width: 32%;
+    border: solid gray 1px;
+    border-radius: 5px;
+  }
+  #small_img_div img:hover{
+    border: solid tomato 2px;
+    transform: scale(1.1)
+  }

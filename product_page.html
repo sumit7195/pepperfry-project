@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Hind&family=Roboto:wght@100;400&family=Shalimar&family=Smooch&family=Source+Sans+3:wght@300&family=Yuji+Boku&family=Zen+Kaku+Gothic+Antique&display=swap"
+    rel="stylesheet"
+  />
+ <link rel="stylesheet" href="./product.css">
+  </head>
+  <body>
+    <div id="product_cover" ></div>
+  </body>
+</html>
+<script>
+
+      let data=JSON.parse(localStorage.getItem("current"))
+
+  let product_cover=document.getElementById("product_cover");
+
+  function display_product(){
+
+    let current=JSON.parse(localStorage.getItem("current"));
+    
+
+      let img_div=document.createElement("div");
+       img_div.id="img_div";
+
+       let big_img_div=document.createElement("div")
+
+       let big_img=document.createElement("img")
+       big_img.id="big_img";
+       big_img_div.append(big_img)
+       big_img.src=current.img1;
+
+       let small_img_div=document.createElement("div")
+       small_img_div.id="small_img_div"
+       let img1=document.createElement("img")
+       img1.src=current.img1
+       img1.addEventListener("mouseover",function(){
+         big_img.src=current.img1
+       })
+       let img2=document.createElement("img")
+       img2.src=current.img2
+       img2.addEventListener("mouseover",function(){
+         big_img.src=current.img2
+       })
+       let img3=document.createElement("img")
+       img3.src=current.img3
+       img3.addEventListener("mouseover",function(){
+         big_img.src=current.img3
+       })
+       small_img_div.append(img1,img2,img3)
+       
+       img_div.append(big_img_div,small_img_div)
+
+      let info_div=document.createElement("div");//////
+      info_div.id="info_div";
+
+      let title_div=document.createElement("div");//////
+      title_div.id="title_div";
+
+      let title=document.createElement("h1");
+      title.id="title";
+      title.textContent=current.Title;
+      let brand=document.createElement("p");
+      brand.class="common_text";
+      brand.textContent=`By ${current.Brand} `
+      let price=document.createElement("span");
+      price.id="price";
+      price.textContent=`₹ ${current.Price}`
+      let first_price=document.createElement("span")
+      first_price.id="first_price";
+      first_price.class="common_text"
+      first_price.innerHTML=` ₹${(current.Price/(current.offer/100)).toFixed(2)}`
+      let tax_lable=document.createElement("span")
+      tax_lable.class="common_text";
+      tax_lable.textContent="(Inclusive of all taxes)"
+      let br=document.createElement("br")
+      let saving_tag=document.createElement("span")
+      saving_tag.class="common_text"
+      saving_tag.textContent="Total Savings";
+
+      let saved_cost=document.createElement("span")
+      saved_cost.id="Saved_cost";
+      saved_cost.textContent=`:₹ ${((current.Price/(current.offer/100))-current.Price).toFixed(2)}`
+
+      title_div.append(title,brand,price,first_price,tax_lable,br,saving_tag,saved_cost)
+
+      let add_div=document.createElement("div")//////
+      add_div.id="add_div";
+      let add_img=document.createElement("img")
+      add_img.src="https://ii2.pepperfry.com/media/wysiwyg/banners/Promo_a_to_k_Web_VIPCoupon2X_09122021_es.jpg"
+      add_div.append(add_img)
+
+      let bank_offers=document.createElement("div")//////
+      bank_offers.id="bank_offers";
+      let off_img=document.createElement("img");
+      off_img.src="https://ii1.pepperfry.com/media/wysiwyg/banners/clip_09122021_es.jpg"
+      bank_offers.append(off_img)
+
+      let btn_div=document.createElement("div");//////
+      btn_div.id="btn_div";
+      let cart_btn=document.createElement("button")
+      cart_btn.textContent="ADD TO CART"
+      cart_btn.addEventListener("click",function(){
+        cartArr.push(current)
+        
+      })
+      let buy_now=document.createElement("button")
+      buy_now.textContent="BUY NOW"
+      btn_div.append(cart_btn,buy_now)
+
+
+
+      let prod_details=document.createElement("div")
+      prod_details.id="prod_details";
+      let p=document.createElement("p");
+      p.textContent="Product details"
+      p.style.fontWeight="bold"
+      prod_details.append(p)
+
+      for( key in data){
+
+       
+        if(key==="img1"||key==="img2"||key==="offer"||key==="img3"||key==="dims"){continue}
+        let property=document.createElement("p");
+        property.innerHTML=`${key} : ${data[key]}`;
+        
+        prod_details.append(property);
+        console.log(key,":",data[key])
+      }
+
+      info_div.append(title_div,add_div,btn_div,bank_offers,prod_details)
+
+      product_cover.append(img_div,info_div)
+  }
+  display_product()
+</script>
