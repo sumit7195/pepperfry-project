@@ -1,6 +1,5 @@
 function navbar() {
   return `
-    
     <div id="headMain">
     <div id="headTop">
       <div>
@@ -83,10 +82,10 @@ function navbar() {
               <P>Seating</P>
               <hr>
               <ul>
-                <li>Settees</li>
-                <li>Benches</li>
-                <li>Chaise Loungers</li>
-                <li>Recamiers</li>
+              <li id="settes">Settees</li>
+              <li>Benches</li>
+              <li >Chaise Loungers</li>
+              <li >Recamiers</li>
                 <li>Ottomans</li>
                 <li>Pouffes</li>
                 <li>Foot Stools</li>
@@ -206,10 +205,10 @@ function navbar() {
               <p>Seating</p>
               <hr>
               <ul>
-                <li>Settees</li>
-                <li>Benches</li>
-                <li>Chaise Loungers</li>
-                <li>Recamiers</li>
+                <li onclick="Settees_f()">Settees</li>
+                <li onclick="Benches_f()">Benches</li>
+                <li onclick="Chaise_loungers_f()">Chaise Loungers</li>
+                <li onclick="Recamiers_f()">Recamiers</li>
                 <li>Ottomans</li>
                 <li>Pouffes</li>
                 <li>Foot Stools</li>
@@ -979,6 +978,5 @@ function navbar() {
   </div>
     `;
 }
-
 
 export default navbar;
