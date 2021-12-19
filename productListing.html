@@ -9,6 +9,28 @@
       src="https://kit.fontawesome.com/5f6f74ca0f.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind&family=Roboto:wght@100;400&family=Shalimar&family=Smooch&family=Source+Sans+3:wght@300&family=Yuji+Boku&family=Zen+Kaku+Gothic+Antique&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/5679ea0e8d.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="header.css" />
   </head>
   <style>
     * {
@@ -149,8 +171,18 @@
     #pl1Offer > div > div > input {
       padding: 300px;
     }
+    #navbar{
+      margin: 30px;
+      position: sticky;
+    }
   </style>
   <body>
+
+    <nav id="navbar">
+      
+    </nav>
+ 
+
     <h3 id="subHead">SETTEES</h3>
     <div id="plmasterContainer">
       <div id="filtersArea" class="bor"></div>
@@ -194,7 +226,25 @@
 
 <!-- ***********************************************************SCRIPT BELOW******************************** -->
 
+<script type="module">
+
+import navbar from "./navbar_func_script.js" ;
+
+let navs = document.getElementById("navbar");
+navs.innerHTML = navbar();
+
+</script>
+
+
+
+
 <script>
+
+
+ 
+
+
+
   // settees data set to localStorage
   // {
   let products_data = [
@@ -700,10 +750,10 @@
           });
           tempBtnEl.children[0].addEventListener("click", () => {
             // add item to cart obj
-            // let cartObj = {
-            //   // item: item,
-            //   qty: 1,
-            // };
+            let cartObj = {
+               item: item,
+              qty: 1,
+            };
             let found = 0;
             for (let i = 0; i < cartArr.length && found == 0; i++) {
               if (cartArr[i].item.Title == item.Title) {
@@ -731,9 +781,9 @@
 
 
 
-function moveCart_fn(){
-  window.location.href = "./cart.html"
-}
+// function moveCart_fn(){
+//   window.location.href = "./cart.html"
+// }
 
 
 

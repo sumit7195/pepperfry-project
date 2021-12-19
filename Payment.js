@@ -1,18 +1,19 @@
-let cartArr = JSON.parse(localStorage.getItem("cartArr"));
-console.log(cartArr);
+// let cartArr = JSON.parse(localStorage.getItem("cartArr"));
+// console.log(cartArr);
 
-let totatAmount = 0;
- cartArr.map((item)=>{
+// let totatAmount = 0;
+//  cartArr.map((item)=>{
 
-   totatAmount += item.Price;
+//    totatAmount += item.item.Price;
    
 
-})
+// })
     
- let dicountPayable = totatAmount % 30 * 1000;
+//  let dicountPayable = totatAmount % 30 * 1000;
  
 
-
+let total  = JSON.parse(localStorage.getItem("Total"));
+console.log(total)
 
 
 window.addEventListener("load",function(){
@@ -34,7 +35,7 @@ paymentmode.addEventListener("change",function(){
 })
 
 var totalpayable=document.getElementById("finalPayAmount");
-totalpayable.textContent=dicountPayable;
+totalpayable.textContent=total;
 });
 
 function fn()

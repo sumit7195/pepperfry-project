@@ -168,7 +168,13 @@
 
       cart_btn.addEventListener("click",function(){
           let cartArr = JSON.parse(localStorage.getItem("cartArr")) || [];
-        cartArr.push(current);
+        
+        let cartObj = {
+               item: current,
+              qty: 1,
+            };
+            
+            cartArr.push(cartObj);
         localStorage.setItem("cartArr",JSON.stringify(cartArr));
         alert("Product added to card")
 
