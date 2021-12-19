@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CheckoutFooterPage.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind&family=Roboto:wght@100;400&family=Shalimar&family=Smooch&family=Source+Sans+3:wght@300&family=Yuji+Boku&family=Zen+Kaku+Gothic+Antique&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/5679ea0e8d.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <style>
+     
+        #container{
+            width: 100%;
+            margin: auto;
+            /* border: 1px solid black; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            /* flex-wrap: wrap; */
+           gap: 0.5rem;
+           margin-bottom: 200px;
+        }
+
+   .cart{
+       display: inline-block;
+       /* border: 1px solid brown; */
+       
+   }
+   .cart > img{
+       width: 150px;
+   }
+
+
+   #payment{
+      width: 100px;
+   }
+
+   .price{
+       font-size: 14px;
+       padding: 10px;
+   }
+ 
+   .offer{
+      color: coral;
+  }
+   
+   
+   .price span{
+       text-decoration: line-through;
+   }
+
+   #btnContainer{
+       border: 1px solid red;
+       float: right;
+   }
+   #productDetail{
+       border: 1px solid black;
+   }
+   .cart{
+       display: flex;
+       width: 100%;
+       border-bottom: 1px  solid black;
+       justify-content: space-between;
+       /* width: 90%; */
+   }
+   .cart div{
+       margin: 10px;
+       font-size: 12px;
+   }
+   .cart div h4{
+       color: red;
+   }
+
+   #payment{
+       border: 1px solid black;
+       min-width: 400px;
+      min-height: 500px
+   }
+   #payInput{
+    /* margin-top: 10px; */
+    margin: 15px;
+     border: 2px solid #e8ebed;
+     border-radius: 2px;
+     color: #323232;
+      background: url(https://ii1.pepperfry.com/images/svg/cpn-auto-fill-icon.svg) no-repeat 20px center;
+     height: 50px; 
+    }
+
+    #payInput > h4{
+        text-align: center;
+    }
+    /* #payInput > div{
+        width: 40px;
+        border: 1px solid red;
+        
+    } */
+
+    
+    #cartValue>div:nth-child(1){
+        /* border: 1px solid blue; */
+        height: 40px;
+        padding: 10px;
+    }
+    #cartValue>div:nth-child(2){
+        /* border: 1px solid blue; */
+        height: 40px;
+        padding: 10px;
+    }
+
+    #cartValue>div:nth-child(3){
+        
+        border-top: 2px solid black;
+         margin-top: 50px;
+         border-bottom: 2px solid black;
+         height: 100px;
+         padding: 20px;
+    }
+
+   #cartValue>div:nth-child(3) p {
+       display: inline;
+   }
+
+    #cartValue>div:nth-child(3) span {
+
+        float: right;
+        display: inline;
+    }
+    #cartValue>div:nth-child(1) p {
+       display: inline;
+   }
+
+    #cartValue>div:nth-child(1) span {
+
+        float: right;
+        display: inline;
+    }
+    #cartValue>div:nth-child(2) p {
+       display: inline;
+   }
+
+    #cartValue>div:nth-child(2) span {
+
+        float: right;
+        display: inline;
+    }
+    #cartValue>div:nth-child(4) button{
+        margin: 28px;
+        width: 300px;
+        height: 50px;
+        background-color: rgb(241, 102, 48)
+
+    }
+    #navbar{
+        margin-bottom: 30px;
+        position: sticky;
+    }
+    </style>
+</head>
+<body>
+<nav id="navbar">
+
+</nav>
+
+ <div id="container">
+
+    <div id="productDetail">
+     
+
+    </div>
+    <div id="payment">
+   
+     <div id="payInput">
+       <h4>APPLY COUPON</h4>
+      <!-- <div> <img src="https://ii1.pepperfry.com/images/svg/nCheckout-next-arrow.svg" alt=""></div> -->
+     </div>  
+     
+
+      <div id="cartValue">
+
+        <div id="value"><p>cart Value</p> <span></span> </div>
+        <div id="retail"><p>Retail discount</p></div>
+         <div id="total"><p>Total</p>    <span></span> </div>
+
+
+         <div><button  onclick="payment_fn()">Place Order</button></div>
+      </div>
+    </div>
+</div>
+
+ 
+  <footer>
+
+
+  </footer>
+</body>
+</html>
+
+<script type="module">
+
+  import navbar from "./navbar_func_script.js";
+
+  let navbars = document.querySelector("nav");
+  navbars.innerHTML = navbar();
+
+</script>
+
+
+<script type="module">
+ 
+ import checkOutFooter from "./footerCheckout.js";
+
+ document.querySelector("footer").innerHTML = checkOutFooter();
+ 
+</script>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+let cartData = JSON.parse(localStorage.getItem("cartArr")) ;
+
+console.log(cartData);
+let  container = document.getElementById("container");
+let productDetail = document.getElementById("productDetail");
+
+
+let cartArr = cartData;
+
+cartArr.map((item)=>{
+
+ 
+  console.log(item)
+let  {Title,Price,offer,img1, Warranty } = item
+   console.log(Title,Price,offer,img1)
+
+      let cart = document.createElement("div");
+      cart.setAttribute("class","cart")
+
+       cart.innerHTML = ` <img id="cartImg" src="${img1}" />
+       
+       <div><h3>${Title}</h3>
+           <h4>${Warranty} </h4>  
+        </div>
+       
+      <h3 class="price">Price:    ₹ <span>${Price}</span></h3>
+        <h3 class="price offer">OfferPrice:     ₹${ Math.round( Price  % offer * 1000)    } </h3>`      
+       productDetail.append(cart)
+     
+
+
+
+
+})
+
+
+
+
+// cartData.forEach((el)=>{
+//     console.log(el.item)
+
+//     // console.log(el.item.img1)
+//     })
+    let totalItem = document.createElement("h3");
+    
+
+    totalItem.textContent = `Total item: ${cartData.length}`
+
+let btn = document.createElement("button");
+btn.id = "payment"
+btn.textContent= "Go to Payment"
+
+// let btnContainer = document.getElementById("btnContainer");
+// btnContainer.append(totalItem, btn);
+let retail  = document.getElementById("retail");
+let value   = document.getElementById("value");
+let total  = document.getElementById("total");
+let sum = 0;
+cartArr.map((item)=>{
+  
+   sum += item.Price;   
+})
+total.innerHTML = `<p>Total</p>    <span>${Math.round((sum * 60)/100) }</span>` 
+
+value.innerHTML = `<p>Cart Value</p>    <span>${sum}</span>`
+retail.innerHTML = `<p>Retail Discount</p>    <span>${Math.round(sum - (sum * 60)/100) }</span>`
+// btn.addEventListener("click", function(){
+//     window.location.href = "./Payment.html"
+// })
+
+
+function payment_fn(){
+    window,location.href = "./Payment.html"
+}
+
+</script>
+
