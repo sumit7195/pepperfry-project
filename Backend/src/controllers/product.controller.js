@@ -3,7 +3,12 @@ const router = require('express').Router();
 //get all the products
 router.get('', async (req, res) => {
   try {
-    const products = await Product.find();
+    const products = await Product.find().populate(
+      {
+        path: 'brand',
+        select: { name: 1 }
+      }
+    );
     res.status(201).send(products)
   } catch (e) {
     res.status(500).send(e)

@@ -14,6 +14,9 @@ const productSchema = new mongoose.Schema({
   Primary_Material:{ type: String, required: true },
   Room_Type:{ type: String, required: true },
   Seating_Height:{ type: Number, required: true },  
+}, {
+  timestamps: true,
+  versionKey:false
 })
 
 module.exports = mongoose.model('products', productSchema);
