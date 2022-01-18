@@ -6,9 +6,9 @@ const User = require('../models/user.model')
 const tokenGenerator = (user) => {
   return jwt.sign({user}, process.env.JWT_TOKEN);  
 }
-const tokenDecoder = (token) => {
-  return jwt.verify(token, process.env.JWT_TOKEN);      
-}
+// const tokenDecoder = (token) => {
+//   return jwt.verify(token, process.env.JWT_TOKEN);      
+// }
 const registerController = async (req, res) => {
   let errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -49,7 +49,8 @@ const loginController = async (req, res) => {
       let token = tokenGenerator(user)
       //decoding the user from the token
       
-      return res.status(201).send({decodedUser:tokenDecoder(token)})   
+      // return res.status(201).send({decodedUser:tokenDecoder(token)})   
+      return res.status(201).send({user,token})   
       
     } else {
       return res.status(500).send("Invalid email or password!");           

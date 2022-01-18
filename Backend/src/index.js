@@ -25,7 +25,8 @@ body('email')
     .notEmpty()
     .withMessage('Password cannot be empty!'),
   loginController)
-  
+
+
 app.use('/users', userController);
 app.use('/products', productController);
 
