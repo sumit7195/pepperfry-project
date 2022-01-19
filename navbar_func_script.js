@@ -3,7 +3,7 @@ function navbar() {
     <div id="headMain">
     <div id="headTop">
       <div>
-        <a href="#">
+        <a href="home.html">
           <img
             src="https://techstory.in/wp-content/uploads/2018/03/Pepperfry.png"
         /></a>
@@ -38,9 +38,10 @@ function navbar() {
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="cart.html">
                 <div class="icon">
                   <i class="fa fa-shopping-cart" style="font-size: 21px"></i>
+
                   <p>Cart</p>
                 </div>
               </a>

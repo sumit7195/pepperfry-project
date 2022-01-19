@@ -1,5 +1,5 @@
  
-    //cartCards
+    //cartCards 
 
 
 function moveTopay(){
@@ -54,7 +54,7 @@ console.log(cartArr)
           {        
             var caCardb=document.createElement('div');
               let caCardbImg=document.createElement('img');
-              caCardbImg.src=cartProd.item.img1;            
+              caCardbImg.src=cartProd.item.images[0];            
               let caCardb2=document.createElement('div');
               caCardb2.setAttribute('class','caCardb2');              
                 let caCardbName=document.createElement('h4');

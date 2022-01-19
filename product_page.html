@@ -89,24 +89,24 @@
        let big_img=document.createElement("img")
        big_img.id="big_img";
        big_img_div.append(big_img)
-       big_img.src=current.img1;
+       big_img.src=current.images[0];
 
        let small_img_div=document.createElement("div")
        small_img_div.id="small_img_div"
        let img1=document.createElement("img")
-       img1.src=current.img1
+       img1.src=current.images[0]
        img1.addEventListener("mouseover",function(){
-         big_img.src=current.img1
+         big_img.src=current.images[0]
        })
        let img2=document.createElement("img")
-       img2.src=current.img2
+       img2.src=current.images[1]
        img2.addEventListener("mouseover",function(){
-         big_img.src=current.img2
+         big_img.src=current.images[1]
        })
        let img3=document.createElement("img")
-       img3.src=current.img3
+       img3.src=current.images[2]
        img3.addEventListener("mouseover",function(){
-         big_img.src=current.img3
+         big_img.src=current.images[2]
        })
        small_img_div.append(img1,img2,img3)
        
@@ -123,7 +123,7 @@
       title.textContent=current.Title;
       let brand=document.createElement("p");
       brand.class="common_text";
-      brand.textContent=`By ${current.Brand} `
+      brand.textContent=`By ${current.brand.name} `
       let price=document.createElement("span");
       price.id="price";
       price.textContent=`₹ ${current.Price}`
@@ -196,11 +196,12 @@
       prod_details.append(p)
 
       for( key in data){
-
        
-        if(key==="img1"||key==="img2"||key==="offer"||key==="img3"||key==="dims"){continue}
+        if(key==="images"||key==="offer"||key==="dims"){continue}
         let property=document.createElement("p");
-        property.innerHTML=`${key} : ${data[key]}`;
+        if(key=='brand')
+        property.innerHTML=`${key} : ${data[key].name}`;
+        else property.innerHTML=`${key} : ${data[key]}`;
         
         prod_details.append(property);
         console.log(key,":",data[key])
