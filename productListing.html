@@ -31,6 +31,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="FooterHomePage.css">
+    <link rel="stylesheet" href="FooterHomePage-2.css">
   </head>
   <style>
     * {
@@ -1194,6 +1196,10 @@
         <div id="pl2"></div>
       </div>
     </div>
+    <footer style="margin-top: 2%;">
+
+
+    </footer>
   </body>
 </html>
 
@@ -1203,6 +1209,8 @@
   import navbar from "./navbar_func_script.js";
   let navs = document.getElementById("navbar");
   navs.innerHTML = navbar();
+  import footer from "./footer.js"
+   document.querySelector("footer").innerHTML = footer();
 </script>
 
 <script>

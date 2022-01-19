@@ -6,9 +6,9 @@
     margin-top: -9px;
     margin-left: -5px;
     background-color: rgba(233, 233, 233, 0.26);
-}
-
-#secondDiv {
+  }
+  
+  #secondDiv {
     width: 1360px;
     height: 210px;
     margin: auto;
@@ -16,12 +16,14 @@
     margin-left: -5px;
     background-color: rgba(233, 233, 233, 0.26);
     margin-bottom: 30px;
-}
-
-.childDiv {
+    
+  }
+  
+  .childDiv {
     width: 350px;
     height: 230px;
     margin-top: 30px;
+    
 }
 
 #pepperfry_logo {
@@ -48,6 +50,10 @@
 
 #firstChildDiv {
     margin-left: 83px;
+    /* line-height: 80px; */
+  }
+  #firstChildDiv>p,#secondChildDiv>p,  #thirdChildDiv>p {
+  margin: 1px 0px;
 }
 
 #secondChildDiv {
