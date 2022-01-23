@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind&family=Roboto:wght@100;400&family=Shalimar&family=Smooch&family=Source+Sans+3:wght@300&family=Yuji+Boku&family=Zen+Kaku+Gothic+Antique&display=swap"
+      rel="stylesheet"
+    />
+    
+    <link rel="stylesheet" href="CheckoutFooterPage.css">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/5679ea0e8d.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link
+    href="https://fonts.googleapis.com/css2?family=Hind&family=Roboto:wght@100;400&family=Shalimar&family=Smooch&family=Source+Sans+3:wght@300&family=Yuji+Boku&family=Zen+Kaku+Gothic+Antique&display=swap"
+    rel="stylesheet"
+  />
+ 
+ <style>
+
+#product_cover {
+    /* border: solid 1px black; */
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Hind', sans-serif;
+  }
+
+  #img_div {
+    /* border: solid red 1px; */
+    width: 50%;
+    /* height: 800px; */
+  }
+  #info_div {
+    /* border: solid red 1px; */
+    width: 48%;
+  }
+  #title_div {
+    /* border: blue solid 1px; */
+    width: 100%;
+  }
+  #title_div > h1 {
+    font-size: 120%;
+    overflow: hidden;
+  }
+  #price{
+    color: tomato;
+    font-weight: bold;
+    font-size: 30px;
+  }
+  #add_div {
+    /* border: blue solid 1px; */
+    width: 100%;
+  }
+  #bank_offers {
+    /* border: blue solid 1px; */
+    width: 100%;
+  }
+  #bank_offers img{
+    border: solid 5px gray ;
+    border-radius: 5px;
+  }
+  #btn_div {
+    /* border: blue solid 1px; */
+    width: 100%;
+    height: 100px;
+    
+  }
+  #btn_div button{
+    width: 30%;
+    margin-left: 3%;
+    /* margin-top: 100px; */
+    height: 40px;
+    background-color:tomato;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bolder;
+    margin-top: 0;
+  }
+  #prod_details {
+    /* border: blue solid 1px; */
+    width: 100%;
+  }
+  #product_cover img{
+    width: 100%;
+
+  }
+  #product_cover p{
+    font-size: 22px;
+    margin-left: 1%;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  span{
+    font-size: 22px;
+  }
+  #first_price{
+    text-decoration: line-through;
+  }
+  #Saved_cost{
+    
+    color: tomato;
+  }
+  #small_img_div{
+    width: 100%;
+    margin-top: 10px;
+    height: 150px;
+    display: flex;
+    gap: 2%;
+  }
+  #small_img_div img{
+    height: 100%;
+    width: 32%;
+    /* border: solid gray 1px; */
+    border-radius: 5px;
+  }
+  #small_img_div img:hover{
+    border: solid tomato 2px;
+    transform: scale(1.1)
+  }
+
+
+
+
+
+  #navbar{
+    position: sticky;
+    top: 0;
+  }
+  #footers{
+    margin-top: 100px;
+  }
+ </style>
+  </head>
+  <body>
+    <nav id="navbar" style="margin-bottom:2%">
+       <%- include('header') %>
+    </nav>
+    <div id="product_cover" ></div>
+    <footer id="footers">
+         <%- include('footer')  %>
+    </footer>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+      let data=JSON.parse(localStorage.getItem("current"))
+
+  let product_cover=document.getElementById("product_cover");
+
+  function display_product(){
+
+    let current=JSON.parse(localStorage.getItem("current"));
+    
+
+      let img_div=document.createElement("div");
+       img_div.id="img_div";
+
+       let big_img_div=document.createElement("div")
+
+       let big_img=document.createElement("img")
+       big_img.id="big_img";
+       big_img_div.append(big_img)
+       big_img.src=current.images[0];
+
+       let small_img_div=document.createElement("div")
+       small_img_div.id="small_img_div"
+       let img1=document.createElement("img")
+       img1.src=current.images[0]
+       img1.addEventListener("mouseover",function(){
+         big_img.src=current.images[0]
+       })
+       let img2=document.createElement("img")
+       img2.src=current.images[1]
+       img2.addEventListener("mouseover",function(){
+         big_img.src=current.images[1]
+       })
+       let img3=document.createElement("img")
+       img3.src=current.images[2]
+       img3.addEventListener("mouseover",function(){
+         big_img.src=current.images[2]
+       })
+       small_img_div.append(img1,img2,img3)
+       
+       img_div.append(big_img_div,small_img_div)
+
+      let info_div=document.createElement("div");//////
+      info_div.id="info_div";
+
+      let title_div=document.createElement("div");//////
+      title_div.id="title_div";
+
+      let title=document.createElement("h1");
+      title.id="title";
+      title.textContent=current.Title;
+      let brand=document.createElement("p");
+      brand.class="common_text";
+      brand.textContent=`By ${current.brand.name} `
+      let price=document.createElement("span");
+      price.id="price";
+      price.textContent=`₹ ${current.Price}`
+      let first_price=document.createElement("span")
+      first_price.id="first_price";
+      first_price.class="common_text"
+      first_price.innerHTML=` ₹${(current.Price/(current.offer/100)).toFixed(2)}`
+      let tax_lable=document.createElement("span")
+      tax_lable.class="common_text";
+      tax_lable.textContent="(Inclusive of all taxes)"
+      let br=document.createElement("br")
+      let saving_tag=document.createElement("span")
+      saving_tag.class="common_text"
+      saving_tag.textContent="Total Savings";
+
+      let saved_cost=document.createElement("span")
+      saved_cost.id="Saved_cost";
+      saved_cost.textContent=`:₹ ${((current.Price/(current.offer/100))-current.Price).toFixed(2)}`
+
+      title_div.append(title,brand,price,first_price,tax_lable,br,saving_tag,saved_cost)
+
+      let add_div=document.createElement("div")//////
+      add_div.id="add_div";
+      let add_img=document.createElement("img")
+      add_img.src="https://ii2.pepperfry.com/media/wysiwyg/banners/Promo_a_to_k_Web_VIPCoupon2X_09122021_es.jpg"
+      add_div.append(add_img)
+
+      let bank_offers=document.createElement("div")//////
+      bank_offers.id="bank_offers";
+      let off_img=document.createElement("img");
+      off_img.src="https://ii1.pepperfry.com/media/wysiwyg/banners/clip_09122021_es.jpg"
+      bank_offers.append(off_img)
+
+      let btn_div=document.createElement("div");//////
+      btn_div.id="btn_div";
+      let cart_btn=document.createElement("button")
+      cart_btn.textContent="ADD TO CART";
+  
+      // cart_btn.addEventListener("dblclick", function(){
+      //   window.location.href = "./cart.html"
+      // })
+
+      cart_btn.addEventListener("click",function(){
+          let cartArr = JSON.parse(localStorage.getItem("cartArr")) || [];
+        
+        let cartObj = {
+               item: current,
+              qty: 1,
+            };
+            
+            cartArr.push(cartObj);
+        localStorage.setItem("cartArr",JSON.stringify(cartArr));
+        // alert("Product added to card")
+
+        
+      })
+      let buy_now=document.createElement("button")
+      buy_now.textContent="BUY NOW"
+      btn_div.append(cart_btn,buy_now)
+       buy_now.addEventListener("click", function(){
+         window.location.href = "/cart";
+       })
+
+
+      let prod_details=document.createElement("div")
+      prod_details.id="prod_details";
+      let p=document.createElement("p");
+      p.textContent="Product details"
+      p.style.fontWeight="bold"
+      prod_details.append(p)
+
+      for( key in data){
+       
+        if(key==="images"||key==="offer"||key==="dims"){continue}
+        let property=document.createElement("p");
+        if(key=='brand')
+        property.innerHTML=`${key} : ${data[key].name}`;
+        else property.innerHTML=`${key} : ${data[key]}`;
+        
+        prod_details.append(property);
+        console.log(key,":",data[key])
+      }
+
+      info_div.append(title_div,add_div,btn_div,bank_offers,prod_details)
+
+      product_cover.append(img_div,info_div)
+  }
+  display_product()
+</script>

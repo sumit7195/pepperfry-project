@@ -1,0 +1,191 @@
+#headMain {
+    /* border: solid black; */
+    width: 100%;
+    margin: 0px;
+    /* margin: 0px; */
+    font-family: 'Hind', sans-serif;
+    background-color: whitesmoke;
+    margin: auto;
+    
+  }
+
+  #headTop {
+    /* border: solid red; */
+    height: 100px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    gap: 20px;
+  }
+
+  #headTop > div:nth-child(1) {
+    flex: 1;
+    cursor: pointer;
+    /* border: solid black; */
+  }
+  #headTop div:nth-child(1) img {
+    width: 60%;
+    height: 65%;
+    margin-top: 5%;
+  }
+
+  #headTop > div:nth-child(2) {
+    flex: 5;
+    /* border: solid black; */
+    display: flex;
+    gap: 20px;
+  }
+
+  #search_bar {
+    flex: 7;
+    border: solid gray 2px;
+    border-radius: 10px;
+    font-size: 22px;
+    font-weight: 100;
+    height: 40px;
+    margin-top: 0.6%;
+    background-color: rgb(247, 247, 247);
+  }
+  #search_2_half div:nth-child(2) {
+    /* border: solid black 1px; */
+    height: 70px;
+    flex: 5;
+  }
+
+  #search_bar input {
+    width: 79%;
+    height: 60%;
+    border: none;
+    border-radius: 10px;
+    font-size: 22px;
+    /* font-weight: 300; */
+    outline: none;
+    background-color: rgb(247, 247, 247);
+    padding-top: 5px;
+  }
+  #search_bar button {
+    width: 10%;
+    height: 100%;
+    float: right;
+    border: none;
+    border-radius: 20%;
+    background-color: white;
+    cursor: pointer;
+    background-color: rgb(247, 247, 247);
+  }
+  #user_help {
+    /* border: 1px solid red; */
+    padding: 0px;
+    overflow: hidden;
+    
+
+  }
+
+  #user_help ul {
+    list-style-type: none;
+  }
+
+  #user_help ul li {
+    float: left;
+    padding-left: 11%;
+    cursor: pointer;
+  }
+  #user_help ul > li:nth-child(3) {
+    margin-top: 2px;
+  }
+  .icon {
+    
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    top: 0;
+    font-size: 14px;
+    text-align: center;
+  }
+  .icon p {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+  }
+
+  /* ////////////////////////////////////////////////////////////////////// */
+
+  #classify_out {
+    margin-top: 5px;
+    height: 40px;
+     /* border: solid rgb(253, 252, 252) 1px;  */
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+      rgb(209, 213, 219) 0px 0px 0px 1px inset;
+      /* border: 1px solid blue; */
+  }
+
+  #clasify {
+    /* border: solid black 1px; */
+    list-style-type: none;
+    height: 35px;
+    width: 75%;
+    margin: auto;
+    padding-top: 0.5%;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #headMain a {
+    text-decoration: none;
+    color: black;
+  }
+  .type_list {
+    font-size: 14px;
+    /* border: solid red 1px; */
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
+  }
+  .type_list:hover {
+    border-bottom: 5px solid tomato;
+  }
+  .try {
+    /* border: solid red 1px; */
+    width: 75%;
+    position: absolute;
+    left: 13%;
+    display: none;
+    margin-top: 20px;
+  }
+  .type_list:hover .try {
+    display: flex;
+  }
+
+  .try div {
+    margin: 0px;
+    padding: 0px;
+    /* border: orange solid 1px; */
+    width: 13.7%;
+    cursor: default;
+    background-color: whitesmoke;
+  }
+  .try div:nth-child(odd) {
+    background-color: rgb(247, 247, 247);
+  }
+  .try div li {
+    list-style-type: none;
+    text-align: left;
+    line-height: 40px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .try div li a:hover {
+    color: tomato;
+    font-weight: bold;
+  }
+  .try div li:hover {
+    color: tomato;
+    font-weight: bold;
+  }
+
+  .try div p{
+      font-weight: bold;      margin-left: 15%;
+      margin-bottom: 0px;
+      text-align: left;
+  }

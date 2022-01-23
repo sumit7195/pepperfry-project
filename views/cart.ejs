@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/5f6f74ca0f.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Cart Page</title>
+    <style>
+        * {
+          font-family: Arial, Helvetica, sans-serif;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-size: 13px;
+          
+        }
+        .ho3BlackBox {
+          background-color: #222222;
+        }
+        .ho3BottomBorder {
+          border-bottom: 1px solid #5c5b5b;
+        }
+        .bor {
+          /* check why removing this is breaking stff */
+          border: 1px solid transparent;
+        }
+        .ho1Container {
+          width: 100%;
+          margin: auto;
+        }
+        /* .ho1Container1 {
+          width: 100%;
+          margin: auto;
+        } */
+        #ho2TopBar {
+          height: 30px;
+          color: #aca8a8;
+          font-weight: 600;
+        }
+        #ho2TopBar ul,
+        #ho7TopBar ul {
+          font-size: 11px;
+          list-style: none;
+          display: flex;
+          padding-top: 6px;
+          justify-content: space-evenly;
+          align-items: center;
+          height: 100%;
+        }
+  
+        /* #ho2TopBar li{
+        border: 1px solid red;
+      } */
+  
+        #ho2TopBar > ul > li:nth-child(1),
+        #ho2TopBar > ul > li:nth-child(3),
+        #ho2TopBar > ul > li:nth-child(4),
+        #ho2TopBar > ul > li:nth-child(5) {
+          margin-right: 3.5%;
+        }
+        #ho2TopBar > ul > li:nth-child(2) {
+          margin-right: 28%;
+        }
+        #ho2TopBar a {
+          text-decoration: none;
+          color: black;
+        }
+        .ho4CurrBox {
+          padding-top: 20px;
+          width: 100%;
+          height: 100px;
+          color: white;
+          text-align: center;
+        }
+        .ho4CurrBox > div {
+          display: flex;
+        }
+        .ho4CurrBox p {
+          font-size: 10px;
+          margin: 10px;
+        }
+        .ho4CurrBox > div > div {
+          border: 1px solid #5c5b5b;
+          background-color: #181818;
+          padding-top: 12px;
+          font-size: 13px;
+          font-weight: 600;
+          width: 15%;
+          height: 40px;
+          margin: 0px 10px;
+        }
+        #ho4BoxesClicked {
+          border: 1px solid white;
+          background-color: black;
+        }
+        #ho7TopBar {
+          color: white;
+          font-weight: 700;
+          height: 60px;
+        }
+        /* img{
+         
+        } */
+  
+        #ho7TopBar > ul > li:nth-child(5) {
+          text-align: center;
+        }
+        #ho7TopBar > ul > li:nth-child(1) {
+          /* border: 1px solid red; */
+          height: 130%;
+          padding-top: 3.2%;
+          padding-left: 0.5%;
+        }
+        /* #ho7TopBar>ul>li{
+          border: 1px solid teal;
+        } */
+  
+        #ho10Temp {
+          height: 450px;
+          width: 100%;
+          background-color: #222222;
+        }
+        #ho10Temp {
+          display: flex;
+        }
+        #ho9Left {
+          /* border: 1px solid red; */
+          width: 50%;
+          margin: auto;
+          margin-right: 10px;
+          height: 350px;
+          margin-top: 25px;
+        }
+        #ho9Right {
+          /* border: 1px solid red; */
+          width: 20%;
+          margin: auto;
+          height: 350px;
+          margin-top: 25px;
+        }
+        #ho11List1,
+        #ho12List2,
+        #ho13List3 {
+          display: flex;
+        }
+        #ho9Left img {
+          border-radius: 50%;
+        }
+        /* #ho9Left img+div{
+        display:inline-block;           
+        border: 1px solid red;   
+         margin-bottom: -30px;  
+      } */
+        #ho9Left td {
+          padding: 3px;
+  
+          padding-left: 40px;
+        }
+        #ho9Left th {
+          padding-right: 50px;
+        }
+        #ho9Left td > div {
+          display: flex;
+        }
+        #ho9Left td > div > div {
+          margin-top: 30px;
+          margin-left: 10px;
+        }
+  
+        #ho9Left table {
+          height: 60%;
+          width: 100%;
+          color: white;
+        }
+        #ho9Left button {
+          width: 100%;
+          height: 30px;
+          border: none;
+          background-color: grey;
+          color: white;
+          margin-top: 10px;
+        }
+  
+        #ho9Right h5 {
+          color: white;
+          text-align: center;
+          margin: 10px;
+        }
+        .ho8Temp {
+          /* border: 1px solid yellow; */
+          height: 450px;
+          width: 100%;
+          background-color: #222222;
+        }
+        
+        #ho17Body {
+          /* height: 510px; */
+          overflow-y: scroll;
+          padding-left: 30px;
+        }
+        #ho39Footer,#ho39FlexBox{
+          background-color: #222222;
+          padding-top: 2%;
+          margin-top: 1%;
+        }
+  
+        #ho39FlexBox{
+          display:flex;
+          justify-content: space-evenly;        
+          color: white;     
+        }
+        #ho39FlexBox>div>div{
+          margin: 10px 0px;        
+        }
+        #ho39Download>div:nth-child(2),#ho39Download>div:nth-child(3){        
+          display: flex;
+          justify-content: space-evenly;
+          /* border: 2px solid white;      */
+          align-items: center;   
+  
+        }
+        #ho39Download>div:nth-child(2)>img{
+          width: 150px;    
+          height: 50px;     
+          margin-left: 5%;   
+          border: 1px solid grey;
+          border-radius: 10px;
+        }
+        #ho39Download>div:nth-child(3){
+          width: 112%;
+          height: 50px;
+        }
+        #ho39Download>div:nth-child(3)>div{
+          /* border: 1px solid teal; */
+          width: 10%;
+          margin-left: 1%;
+          padding-left: 2.5%;
+        }
+        #ho39Download>div:nth-child(5)>span>a{
+          color: white;
+        }
+        #ho39Footer>div:nth-child(2){        
+          color: grey;
+          display: flex;
+          justify-content: right;
+        }
+        #ho39Footer>div:nth-child(2)>div{        
+          margin: 20px 0px;    
+          font-size: 13px;    
+          font-weight: 600;
+          margin-right: 20px;
+        }
+        /* #ho39Footer>div:nth-child(4),#ho39Footer>div:nth-child(4){   
+          display: inline-block;
+        } */
+        #ho39Footer>div:nth-child(4){     
+          display: flex;
+          justify-content: space-evenly; 
+          align-items: center; 
+          color: white;  
+          padding: 1% 0%;    
+        }
+        #ho39Footer>div:nth-child(4)>div{  
+          /* border: 1px solid red;*/
+          width: 6%;
+          height: 50px;
+          padding-left: 2%;
+          padding-top: 0.5%;
+        }
+        #ho39Footer>div:nth-child(4)>div:nth-child(10){
+          padding-top: 1%;
+          font-size: 12px;
+          width: 25%;
+          color: grey;                   
+        }
+        
+        h1{
+          font-weight: 800;
+          margin: 4%;       
+        }    
+  
+        #cartSection{
+          display: flex;
+          padding-top: 10px;
+          justify-content: space-evenly;
+        }
+        #cartSection #caComp1{
+          /* border: 1px solid red; */
+          width: 70%; 
+          /* height: 480px;    */
+          /* overflow-y: scroll;     */
+        }
+        #caComp1>h3{
+          font-size: 18px;
+        }
+        #caComp1>h3>span{
+          color: grey;
+          font-size: 13px;
+  
+        }
+        #cartSection #caComp2{
+          width: 28%;      
+        }
+        #caComp1a{
+          display: flex;                
+        }
+        #caComp1a>h4{
+          margin-right: 50%;
+        }
+        #caComp1a>h4:nth-child(2){
+          margin-right: 21%;      }
+        #caComp1CardSection{
+          height: 500px;
+        }
+        .caCardTop{
+          display: flex;        
+          height: 40%;        
+          border: 1px solid grey;
+        }
+        .caCardTop>div{
+          width: 15%;
+          /* border: 2px solid black;         */
+        }
+        .caCardTop>div:nth-child(1){        
+          width: 50%;   
+          margin-right: 10%;     
+          /* border: 2px solid black;         */
+        }
+        .caCardTop>div:nth-child(2){    
+          padding-top: 5%;   
+          margin-right: 15%;   
+          /* border: 1px solid teal; */
+          
+        }
+        .caCardTop>div:nth-child(3){ 
+          padding-top: 6%;      
+          
+        }
+        .caCardTop img{
+          /* border: 1px solid teal; */
+          width: 100px;
+          height: 55%;        
+          margin: 3%;
+        }
+        .caCardb{
+          display: flex;
+          align-items: center;
+        }
+        .caCardbMRP>span:nth-child(1){
+          text-decoration-line: line-through;
+          color:grey;
+          font-weight: 400;        
+        }
+        .caCardbMRP>span:nth-child(2){
+          color: #F16521;
+        }
+        #caCardbOff{        
+          text-decoration-line: none;
+          margin-left: 5px;
+          font-weight: 600;
+          color: red;
+        }
+        
+        .caCardb2>h5,.caCardb2>h4{
+          margin: 4% 0%;        
+        }
+        .caCardb2>h5{
+          color: #F16521;
+        }
+        .caCardbWish{
+          height: 50px;
+          width: 90%;
+          background-color: #F6F6F6;
+          border: none;
+        }
+        .caCardc{
+          display: flex;  
+          flex-wrap: wrap;   
+          padding-left: 1%;  
+        }
+        .caCardc>div{                
+          height: 20%;        
+          padding-top: 5%;
+          margin: 3%;
+          /* border: 1px solid red;          */
+          color: grey;
+          font-weight: 100;
+        }
+        .caCardc>div:nth-child(1),.caCardc>div:nth-child(3){
+          width: 15%;     
+          padding-top: 10%;   
+        }
+        .caCardc>div:nth-child(2){        
+          width: 40%;            
+        }
+        .caCardc>div:nth-child(2) input{                
+          padding-left: 25%;
+        }
+        .caCardc>div:nth-child(4){                
+          margin-top: -60px;
+          padding-left: 7%;   
+          margin-left: 23%;       
+        }
+        
+        .modalBox{
+          display: none;   
+          padding-top: 100px;     
+          position: fixed;
+          left: 0;
+          top: 0;
+          background-color: rgba(0,0,0,0.7);
+          width:100%;
+          height: 100%;        
+        }
+        .modalContent{
+          background-color: white;
+          box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+          border: 1px solid black;
+          padding:10px;
+          margin: auto;        
+          margin-top: 5%;
+          width: 50%;
+          height: 35%;
+          text-align: center;
+        }
+        .modalContent span{
+          margin-right: -95%;
+          font-size: 35px;
+        }
+        .modalContent p{
+          margin:2% 0%;
+        }
+        .modalContent button{
+          border: none;
+          background-color: white;
+          color: black;
+          width: 30%;
+          margin: 0px 20px;
+          height: 50px;
+        }
+        .modalContent>button:nth-child(3),.modalContent>button:nth-child(4){
+          background-color: white;
+          color: black;          
+        }
+        .modalContent>button:hover{
+          border: none;
+          border: 1px solid grey;
+          background-color: #f16521;        
+          color: white;          
+        }
+        
+        #caComp2a{
+          display: flex;  
+          margin-top: 15%;      
+        }
+        #caComp2a>div:nth-child(2){
+          padding: 10px;
+          border-bottom: 1px solid #d1d1d1;
+          color: grey;
+          
+        }
+        #caComp2a>div:nth-child(1){
+          padding: 10px;
+          border: 1px solid #d1d1d1;
+          border-bottom: none;        
+        }
+        #caComp2b{
+          height: 100px;
+          padding-top: 3%;
+        }
+        #caComp2b input{
+          width: 70%;
+          height: 40px;
+          background-color: #f1f0f0;        
+          border: none;
+        }
+        #caComp2b button{
+          width: 28.5%;
+          height: 40px;
+          background-color: white;        
+          border:1px solid black;
+        }
+        #caComp2b>div p{
+          font-size: 12px;
+        }
+        #caComp2b>div span{
+          font-size: 12px;
+        }
+        #caComp2b>div input{
+          width: 10%;
+          height: 10px;
+          background-color: #f1f0f0;        
+          border: none;
+        }
+        #caComp2b>div button{
+          width: 28.5%;
+          height: 40px;
+          background-color: white;  
+          color: grey;      
+          border:none;
+        }
+        #caComp2d{
+          width: 100%;
+        }
+        #caComp2d>button{
+          margin:15px 0px;
+          border: none;
+          width: 100%;
+          background-color: #F16521;
+          color: white;
+          height: 50px;
+        }
+        #caComp2e{
+          text-align: center;
+          text-decoration: underline;
+          text-underline-offset: 5px;
+        }
+        #caComp2e:hover{
+          text-underline-offset: 2px;
+        }
+        #caComp2c>table td{        
+          padding-right: 30px;        
+          padding-bottom: 10px;        
+          padding-top: 10px;        
+          /* border: 1px solid red; */
+          
+        }
+      </style>
+    
+  </head>
+
+  <!-- *****************************************************HTML BELOW*************************************** -->
+  <body>
+    
+    <div class="footer" style="margin-bottom: 2%;">
+      <%- include('header') %>
+    </div>
+
+
+    <div id="ho17Body">    
+      <!-- ******************************cart section starts here******************************** -->
+      <div id="cartSection">
+
+        <div class='bor' id="caComp1">
+          <br>
+          <h3>IN YOUR CART <span>(<span>0</span> Items)</span></h3>
+          <br>
+          <!-- <div id="caComp1a">
+            <h4>ITEM(S)</h4>
+            <h4>QUANTITY</h4>
+            <h4>TOTAL</h4>
+          </div>   -->
+          <br>                  
+          <div id="caComp1CardSection">          
+          </div>
+        </div>
+        <div class='bor' id="caComp2">          
+          <br>
+          <div class='bor' id="caComp2a">
+            <div><h5>ENTER VOUCHER CODE</h5></div>
+            <div><h5>VIEW PROMO CODES</h5></div>            
+          </div>
+          <div class='bor' id="caComp2b">
+            <input type="text">            
+            <button>APPLY</button>            
+          </div>
+          <div class='bor' id="caComp2c">
+            <table>
+              <tr>
+                <td>Cart Value (<span>0</span> Items)</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Delivery<span>(FREE)</span></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Retail Discount</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Promotional Code</td>
+                <td></td>
+              </tr>                            
+              <tr>  
+                <td><h2>Total</h2></td>                
+                <td></td>
+              </tr>
+            </table>                          
+              
+          </div>
+          <div class='bor' id="caComp2d">
+            <button onclick="moveTopay()">PLACE ORDER</button>
+          </div>
+          
+          
+          
+        </div>
+
+      </div>
+    </div>
+    
+    <div class="footer" style="margin-top: 10%;">
+
+     <%- include('footer') %>
+
+    </div>
+
+  </body>
+</html>
+
+<script>
+
+ 
+    //cartCards 
+
+
+    function moveTopay(){
+  window.location.href="/payment";
+}
+
+{
+  var cartArr = JSON.parse(localStorage.getItem('cartArr')) || [];
+      
+console.log(cartArr)
+      let caComp1CardSection=document.getElementById('caComp1CardSection')
+      // console.log(caComp1CardSection)
+
+      let modalBox=document.createElement('div');
+      modalBox.setAttribute('class','modalBox'); 
+      modalBox.innerHTML=`<div class='modalContent'>
+                              <span class="close">&times;</span>
+                              <p>Are you sure you want to remove this item from your cart?</p>  
+                              <button>YES</button>      
+                              <button>NO</button>
+                          </div>`
+                          
+                          
+  document.querySelector('body').append(modalBox)
+  
+      document.querySelector('.modalContent>span').addEventListener('click',function(){
+        modalBox.style.display='none'
+    
+      })      
+      document.querySelector('.modalContent>button:nth-child(4)').addEventListener('click',function(){
+        // alert('NO clicked');
+        modalBox.style.display='none'
+    
+      })
+
+      // window.addEventListener('click',function(){
+      //   modalBox.addEventListener('mouseleave',function(){
+      //     modalBox.style.display='none'
+      //   })    
+               
+
+      // })        
+      
+      displayCards(cartArr);
+      
+
+      function displayCards(cArr){
+        cArr.map(function(cartProd){
+          let caCardTop=document.createElement('div');
+          caCardTop.setAttribute('class','caCardTop')
+          // cardb
+          {        
+            var caCardb=document.createElement('div');
+              let caCardbImg=document.createElement('img');
+              caCardbImg.src=cartProd.item.images[0];            
+              let caCardb2=document.createElement('div');
+              caCardb2.setAttribute('class','caCardb2');              
+                let caCardbName=document.createElement('h4');
+                caCardbName.textContent=cartProd.item.Title;
+                let caCardbCode=document.createElement('h5');
+                caCardbCode.textContent=`36 Months' Warranty, 100% Genuine`;
+            let caCardbMRP = document.createElement('h4');  
+            let tempPrice = (100 - cartProd.item.offer) / 100;                  
+            caCardbMRP.innerHTML = '<span><i class="fas fa-rupee-sign"></i>&nbsp;' + cartProd.item.Price + '</span>&nbsp&nbsp&nbsp;<span><i class="fas fa-rupee-sign"></i>&nbsp;' + Math.round((tempPrice) * cartProd.item.Price); '</span>'
+            caCardbMRP.setAttribute('class','caCardbMRP')
+                // let caCardbWish=document.createElement('select');  
+                // caCardbWish.setAttribute('class','caCardbWish');
+                //   let options=document.createElement('option');
+                //   options.textContent='Move To Wishlist'                
+                // caCardbWish.append(options)
+              caCardb2.append(caCardbName,caCardbCode,caCardbMRP)
+            caCardb.append(caCardbImg,caCardb2);              
+            caCardb.setAttribute('class','caCardb')
+          }
+          // cardc
+  
+          {        
+            var caCardc=document.createElement('div');            
+            
+              let caCardc1=document.createElement('div');
+                caCardc1.innerHTML='<i class="fas fa-minus"></i>'
+                caCardc1.addEventListener('click',function(){
+                  // alert('minus')
+                  if(caCardc2Inp.value>1)
+                  {
+                    caCardc2Inp.value--;
+                    cartProd.qty=caCardc2Inp.value;
+                    localStorage.setItem('cartArr',JSON.stringify(cartArr));
+                    document.querySelector('#caComp1>h3>span>span').textContent=cartArr.reduce(function(acc,el){
+                    return acc+Number(el.qty);
+                    },0)
+                    
+                    calcTotal();
+                    location.reload();
+                    
+                  }
+
+                })
+              let caCardc2=document.createElement('div');              
+              let caCardc2Inp=document.createElement('input');
+              caCardc2Inp.style.width='100%';
+              caCardc2Inp.style.height='100%';
+              caCardc2Inp.textContent=cartProd.qty
+                // caCardc2.textContent=cartProd.qty
+                
+                caCardc2Inp.value=cartProd.qty;
+                caCardc2Inp.addEventListener('change',function(){
+                  // alert('box')
+                  cartProd.qty=caCardc2Inp.value;
+                    localStorage.setItem('cartArr',JSON.stringify(cartArr));
+                    document.querySelector('#caComp1>h3>span>span').textContent=cartArr.reduce(function(acc,el){
+                    return acc+Number(el.qty);
+                    },0)
+                    
+                    calcTotal();
+                    location.reload();
+                    
+                })       
+                caCardc2.append(caCardc2Inp)   
+              let caCardc3=document.createElement('div');
+                caCardc3.innerHTML='<i class="fas fa-plus"></i>'
+                caCardc3.addEventListener('click',function(){
+                  // alert('plus')
+                  if(caCardc2Inp.value)
+                  {
+                    caCardc2Inp.value++;
+                    cartProd.qty=caCardc2Inp.value;
+                    localStorage.setItem('cartArr',JSON.stringify(cartArr));
+                    document.querySelector('#caComp1>h3>span>span').textContent=cartArr.reduce(function(acc,el){
+                    return acc+Number(el.qty);
+                    },0)                    
+                    calcTotal();
+                    location.reload();
+                    
+                  }
+                })
+              let caCardc4=document.createElement('div');
+            caCardc4.innerHTML = '<span><i class="far fa-trash-alt"></i></span>&nbsp;&nbsp<span><i class="far fa-heart"></i></span>';
+            caCardc4.children[1].addEventListener('click', function () { 
+             alert('Work in progress!!🚧')
+            })
+              caCardc4.children[0].addEventListener('click',function(){              
+                modalBox.style.display='block'
+                document.querySelector('.modalContent>button:nth-child(3)').addEventListener('click',function(){
+                  cartArr=cartArr.filter(function(el){
+                    return el!=cartProd;
+                  })
+                  localStorage.setItem('cartArr',JSON.stringify(cartArr));
+                  location.reload();
+                  displayCards(cartArr);              
+                  modalBox.style.display='none'
+              
+                })
+                // console.log(cartProd.prod)    
+                // document.style.backgroundColor= 'rgba('+'0,0,0,0.4'+')';
+                
+              })
+              caCardc.append(caCardc1,caCardc2,caCardc3,caCardc4)
+              caCardc.setAttribute('class','caCardc')
+          }
+          // cardd
+          {
+            var caCardd=document.createElement('div');
+            calcTotal();
+            
+            function calcTotal(){
+              
+              caCardd.innerHTML='<i class="fas fa-rupee-sign"></i>&nbsp;'+Math.round(((100-cartProd.item.offer)/100)*cartProd.item.Price*cartProd.qty);              
+              
+              
+            }
+            caCardd.setAttribute('class','caCardd')   
+          }
+          caCardTop.append(caCardb,caCardc,caCardd);
+  
+          // let hr=document.createElement('hr')
+          // hr.style.border='2px solid #D1D1D1'         
+  
+          caComp1CardSection.append(caCardTop)
+  
+        })
+
+
+        document.querySelector('#caComp1>h3>span>span').textContent=cartArr.reduce(function(acc,el){
+          return acc+Number(el.qty);
+        },0)
+
+      }
+      
+      
+    }
+  
+  //orderSummaryCartSection
+  {
+    let caVoucherApplied=0,orderSave=0,orderDisc=0,caPromoApplied=0,orderTot=0;
+    let caComp2a=document.getElementById('caComp2a');
+    document.getElementById('caComp2b').addEventListener('click',function(e){      
+      if(e.target.previousElementSibling.toString()=='[object HTMLInputElement]')
+      {
+        // alert('voucher')
+         if(document.querySelector('#caComp2b input').value=='masai10'){
+           if(caVoucherApplied==0)
+           {
+             alert('10% additional discount applied!!')           
+             caVoucherApplied=1;
+             
+             if(caPromoApplied==1){
+               caComp2cTd[7].innerHTML='-'+'&nbsp&nbsp<i class="fas fa-rupee-sign"></i>&nbsp;'+Math.floor(orderTot*0.4)
+              //  orderSave+=Math.floor(orderTot*0.1)
+             }
+             else{
+              caComp2cTd[7].innerHTML='-'+'&nbsp&nbsp<i class="fas fa-rupee-sign"></i>&nbsp;'+Math.floor(orderTot*0.1)
+              // orderSave+=Math.floor(orderTot*0.1)
+             }             
+             orderSave+=Math.floor(orderTot*0.1)
+             caComp2cTd[12].innerHTML='-'+'&nbsp&nbsp<i class="fas fa-rupee-sign"></i>&nbsp;'+(orderSave)
+             caComp2cTd[9].innerHTML='<i class="fas fa-rupee-sign"></i>&nbsp;'+Math.floor(orderTot-orderSave);
+           }else{
+            alert('Voucher already applied!!')           
+           }
+         }else{
+           alert('Invalid code!')
+         }
+      }     
+      else if(e.target.previousElementSibling.toString()=='[object HTMLSpanElement]'){
+        if(caPromoApplied==0){
+          // alert('promo')
+          alert('30% additional discount applied!!') 
+          caPromoApplied=1;      
+
+          if(caVoucherApplied==1){
+            caComp2cTd[7].innerHTML='-'+'&nbsp&nbsp<i class="fas fa-rupee-sign"></i>&nbsp;'+Math.floor(orderTot*0.4)
+            // orderSave+=Math.floor(orderTot*0.3)
+          }else{
+            caComp2cTd[7].innerHTML='-'+'&nbsp&nbsp<i class="fas fa-rupee-sign"></i>&nbsp;'+Math.floor(orderTot*0.3)
+            // orderSave+=Math.floor(orderTot*0.3)
+          }          
+          orderSave+=Math.floor(orderTot*0.3)
+          caComp2cTd[12].innerHTML='-'+'&nbsp&nbsp<i class="fas fa-rupee-sign"></i>&nbsp;'+(orderSave)
+          caComp2cTd[9].innerHTML='<i class="fas fa-rupee-sign"></i>&nbsp;'+Math.floor(orderTot-orderSave);
+        }
+      }
+    })
+    
+    let caComp2bVoucherText=document.getElementById('caComp2b').innerHTML;
+    let caComp2bPromoText=`
+            <div>
+            <p>Click on APPLY if you wish to use the promocode😋</p>            
+            <input type="radio" checked>&nbspMASAI30 <span>(Enjoy 30% Off)</span>
+            <button>APPLY</button>
+            <div>`
+    
+    caComp2a.children[0].addEventListener('click',function(){
+      // alert(1)
+      caComp2a.children[0].style.color = 'black';
+      caComp2a.children[1].style.color = 'grey';
+      caComp2a.children[0].style.borderTop='1px solid #d1d1d1'
+      caComp2a.children[0].style.borderBottom='none'      
+      caComp2a.children[1].style.borderTop='none'
+      caComp2a.children[1].style.borderBottom='1px solid #d1d1d1'      
+      caComp2a.children[1].style.borderRight='1px solid #d1d1d1'      
+      document.getElementById('caComp2b').innerHTML=caComp2bVoucherText;            
+    })
+    
+    
+    caComp2a.children[1].addEventListener('click',function(){
+      // alert(2)
+      caComp2a.children[1].style.color = 'black';
+      caComp2a.children[0].style.color = 'grey';
+      caComp2a.children[1].style.borderTop='1px solid #d1d1d1'
+      caComp2a.children[1].style.borderBottom='none'      
+      caComp2a.children[1].style.borderRight='1px solid #d1d1d1'      
+      caComp2a.children[0].style.borderTop='none'
+      caComp2a.children[0].style.borderBottom='1px solid #d1d1d1'      
+      document.getElementById('caComp2b').innerHTML=caComp2bPromoText      
+    })  
+
+
+      document.querySelector('#caComp2d>button').addEventListener('click',function(){
+        // alert('checkout')
+        // console.log(caComp2cTd[5].innerHTML)
+
+        let checkoutObj={
+          orderTotal:caComp2cTd[1].innerHTML,
+          orderDisc:caComp2cTd[5].innerHTML,
+          orderPromo:caComp2cTd[7].innerHTML,
+          orderYouPay:caComp2cTd[9].innerHTML,
+          orderSave:caComp2cTd[12].innerHTML
+        }
+        localStorage.setItem('checkoutObj', JSON.stringify(checkoutObj));
+        if (cartArr && cartArr.length != 0) window.location.href = 'checkout.html'
+        else alert('Please add some Items..Your Cart is empty!!');
+      })
+
+  let caComp2cTd = document.querySelectorAll('#caComp2c>table td')
+  let caComp2cTr = document.querySelectorAll('#caComp2c>table tr')
+  let hr = document.createElement('hr')
+  hr.style.width='160%'
+  hr.style.backgroundColor='black'
+  caComp2cTr[4].before(hr)  
+
+      orderTot=(cartArr).reduce(function(acc,el){
+        return acc+el.item.Price*el.qty;
+      },0)  
+
+      // let caComp2cOrder
+     caComp2cTd[0].children[0].textContent=cartArr.reduce(function(acc,el){
+       return acc+Number(el.qty)
+     },0)
+
+      caComp2cTd[1].innerHTML='&nbsp&nbsp<i class="fas fa-rupee-sign"></i>&nbsp;'+orderTot
+
+      // let caComp2cShip
+      caComp2cTd[3].innerHTML='<i class="fas fa-rupee-sign"></i>&nbsp;0'
+
+      // let caComp2cDisc
+      orderDisc=(cartArr).reduce(function(acc,el){
+        return acc+(el.item.offer/100)*el.item.Price*el.qty;
+      }, 0)
+      
+    caComp2cTd[4].style.color='green'
+  
+      caComp2cTd[5].innerHTML='(-)'+'&nbsp&nbsp<i class="fas fa-rupee-sign"></i>&nbsp;'+Math.floor(orderDisc)
+      // let caComp2cPromo
+      caComp2cTd[7].innerHTML='(-)'+'&nbsp&nbsp<i class="fas fa-rupee-sign"></i>&nbsp;'+0;
+
+      // let orderPV=0;
+      // if(caPromoApplied==1){
+      //   orderPV=0.3;
+      //   caComp2cTd[7].innerHTML='-'+'&nbsp&nbsp<i class="fas fa-rupee-sign"></i>'+orderTot*0.3
+      // }else if(caPromoApplied==1 && caVoucherApplied==1){
+      //   orderPV=0.4;
+      //   caComp2cTd[7].innerHTML='-'+'&nbsp&nbsp<i class="fas fa-rupee-sign"></i>'+orderTot*0.4
+      // }else {
+      //   orderPV=0;
+      // }
+
+      // let caComp2cPay
+      orderSave=Math.floor(orderDisc);            
+      caComp2cTd[9].innerHTML = '<i class="fas fa-rupee-sign"></i>&nbsp;' + Math.floor(orderTot - orderSave);            
+      let total = localStorage.setItem("Total", JSON.stringify( Math.floor(orderTot - orderSave)))
+    }
+  
+
+
+
+
+</script>
+
