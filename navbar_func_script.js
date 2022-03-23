@@ -3,7 +3,7 @@ function navbar() {
     <div id="headMain">
     <div id="headTop">
       <div>
-        <a href="#">
+        <a href="index.html">
           <img
             src="https://techstory.in/wp-content/uploads/2018/03/Pepperfry.png"
         /></a>
