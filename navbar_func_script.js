@@ -38,7 +38,7 @@ function navbar() {
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="cart.html">
                 <div class="icon">
                   <i class="fa fa-shopping-cart" style="font-size: 21px"></i>
                   <p>Cart</p>
