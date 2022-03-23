@@ -46,7 +46,7 @@ function navbar() {
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="index2.html">
                 <div class="icon">
                   <i class="material-icons" style="font-size: 21px">person</i>
                   <p>Profile</p>

@@ -337,5 +337,21 @@
 
     slideImage()
 
+   
+
+
+    var data_info = (function() {
+    var executed = false;
+    return function() {
+        if (!executed) {
+            executed = true;
+            setTimeout(()=>{
+        alert("hey there as this is clone you can find dummy products in - Living > Settees")
+    }
+    ,2000)
+        }
+    };
+})();
+
 
 </script>

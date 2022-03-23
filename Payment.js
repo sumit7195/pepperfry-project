@@ -158,7 +158,7 @@ function fn()
             //             {
             //                 // ----------------order complete here-------------------
             //                 alert("Please add item to cart");
-            //                 window.location.href="../Home.html";
+            //                 window.location.href="../index.html";
             //             }
                        
             //         }
@@ -168,7 +168,7 @@ function fn()
             // // else
             // {
             //     alert("Login First");
-            //     window.location.href="../Home.html";
+            //     window.location.href="../index.html";
             // }
             
         //  }
